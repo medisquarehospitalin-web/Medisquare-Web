@@ -1,56 +1,203 @@
-import homeData from "../../data/home.json";
-import oncologyData from "../../data/oncology.json";
-import movementdisordersData from "../../data/movementdisorders.json";
-import pediatricData from "../../data/pediatric.json";
-import drEktaData from "../../data/dr_ekta.json";
-import drMiteshData from "../../data/dr_mitesh.json";
-import awarenessData from "../../data/awareness.json";
-import educationOncologyData from "../../data/education_oncology.json";
-import educationMovementdisordersData from "../../data/education_movementdisorders.json";
-import educationPediatricData from "../../data/education_pediatric.json";
-import menuData from "../../data/menu.json";
-import settingsData from "../../data/settings.json";
+import { sanityClient } from "./sanity";
+import {
+  ALL_SITE_DETAILS_QUERY,
+  ALL_SOCIALS_QUERY,
+  NAVIGATION_MENU_QUERY,
+  PAGE_BY_SLUG_QUERY,
+  PAGE_BY_TYPE_QUERY,
+  PAGES_SITEMAP_QUERY,
+} from "./queries";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const dataMap: Record<string, any> = {
-  home: homeData,
-  oncology: oncologyData,
-  movementdisorders: movementdisordersData,
-  pediatric: pediatricData,
-  dr_ekta: drEktaData,
-  dr_mitesh: drMiteshData,
-  awareness: awarenessData,
-  education_oncology: educationOncologyData,
-  education_movementdisorders: educationMovementdisordersData,
-  education_pediatric: educationPediatricData,
-  menu: menuData,
-  settings: settingsData,
-};
+async function sanityFetch<T = any>(
+  query: string,
+  params: Record<string, unknown> = {},
+): Promise<T> {
+  return sanityClient.fetch<T>(query, params);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mapPageData(raw: any): PageResponse | null {
+  if (!raw) return null;
+
+  const camelToSnake = (str: string): string => {
+    if (!str) return "";
+    return str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
+  };
+
+  return {
+    slug: raw.slug || "",
+    title: raw.title || "",
+    metaTitle: raw.metaTitle,
+    metaDescription: raw.metaDescription,
+    pageType: raw.pageType || "",
+    schemaMarkup: raw.schemaMarkup,
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    sections: Array.isArray(raw.sections)
+      ? raw.sections
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .filter((section: any) => {
+            if (!section) return false;
+            const sectionData = section.sectionData || section;
+            return (
+              sectionData.hideSection !== true && section.hideSection !== true
+            );
+          })
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .map((section: any, index: number) => {
+            const isProjected = section && "sectionData" in section;
+
+            let id = "";
+            let rawType = "";
+            let sortOrder = index + 1;
+            let sectionData = {};
+
+            if (isProjected) {
+              id = section.id || section._key || "";
+              rawType = section.sectionType || section._type || "";
+              sortOrder = section.sortOrder ?? index + 1;
+              sectionData = section.sectionData || {};
+            } else {
+              id = section._key || "";
+              rawType = section._type || "";
+              sortOrder = index + 1;
+              sectionData = { ...section };
+            }
+
+            // Clean null and undefined values from sectionData
+            let cleanSectionData = {};
+            if (sectionData && typeof sectionData === "object") {
+              cleanSectionData = Object.fromEntries(
+                Object.entries(sectionData).filter(
+                  ([_, v]) => v !== null && v !== undefined,
+                ),
+              );
+            }
+
+            const sectionType = camelToSnake(rawType);
+
+            return {
+              id,
+              sectionType,
+              sortOrder,
+              sectionData: cleanSectionData,
+            };
+          })
+      : [],
+  };
+}
 
 export async function fetchPageSections(pageType: string): Promise<PageResponse> {
-  const normalized = pageType.toLowerCase().replace(/-/g, "_");
-  const data = dataMap[normalized === "home" ? "home" : normalized];
-  if (!data) {
-    throw new Error(`No mock data found for page type "${pageType}"`);
+  const raw = await sanityFetch(PAGE_BY_TYPE_QUERY, {
+    pageTypeName: pageType,
+  });
+
+  const page = mapPageData(raw);
+  if (!page) {
+    throw new Error(`No published page found for type "${pageType}"`);
   }
-  return data;
+  return page;
 }
 
 export async function fetchSettings(): Promise<Setting[]> {
-  return (dataMap.settings as Setting[]) || [];
+  const [rawDetails, rawSocials] = await Promise.all([
+    sanityFetch(ALL_SITE_DETAILS_QUERY),
+    sanityFetch(ALL_SOCIALS_QUERY),
+  ]);
+
+  const settings: Setting[] = [];
+
+  if (Array.isArray(rawDetails)) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    rawDetails.forEach((d: any) => {
+      settings.push({
+        id: d._id || d.key,
+        key: d.key,
+        value: d.value || "",
+      });
+    });
+  }
+
+  if (Array.isArray(rawSocials)) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    rawSocials.forEach((s: any) => {
+      settings.push({
+        id: s._id || s.socialKey,
+        key: s.socialKey,
+        value: s.socialValue || "",
+      });
+    });
+  }
+
+  return settings.filter((s) => s.value !== "");
 }
 
 export async function fetchMenuFront(): Promise<MenusResponse> {
-  const menu = dataMap.menu;
-  if (!menu) {
+  const raw = await sanityFetch(NAVIGATION_MENU_QUERY, {
+    menuTypeName: "Header",
+  });
+
+  if (!raw || !Array.isArray(raw.items)) {
     return { success: true, status: 200, message: "No menu", data: [] };
   }
-  return {
-    success: true,
-    status: 200,
-    message: "Menu fetched",
-    data: menu,
-  };
+
+  const items = raw.items
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .sort((a: any, b: any) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .map((item: any, idx: number) => {
+      let link = "#";
+      if (item.linkType === "page") {
+        const slug = item.pageSlug || "";
+        link = slug === "home" || slug === "/" ? "/" : `/${slug}`;
+      } else {
+        link = item.externalLink || "#";
+      }
+
+      return {
+        id: `menu-${idx}`,
+        menuName: item.menuName || "",
+        link,
+        parentPageId: null,
+        sortOrder: item.sortOrder ?? idx,
+        status: item.status === 1 ? "active" : "inactive",
+        isClickable: item.isClickable !== false,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        parentPage: null,
+        segment: null,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        children: Array.isArray(item.children)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ? item.children.map((child: any, cidx: number) => {
+              let childLink = "#";
+              if (child.linkType === "page") {
+                const slug = child.pageSlug || "";
+                childLink = slug === "home" || slug === "/" ? "/" : `/${slug}`;
+              } else {
+                childLink = child.externalLink || "#";
+              }
+              return {
+                id: `menu-${idx}-${cidx}`,
+                menuName: child.menuName || "",
+                link: childLink,
+                parentPageId: `menu-${idx}`,
+                sortOrder: child.sortOrder ?? cidx,
+                status: child.status === 1 ? "active" : "inactive",
+                isClickable: child.isClickable !== false,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
+                parentPage: null,
+                segment: null,
+                children: [],
+              };
+            })
+          : [],
+      };
+    });
+
+  return { success: true, status: 200, message: "Menu fetched", data: items };
 }
 
 export async function fetchMenuByName(): Promise<MenusResponse> {
@@ -58,8 +205,10 @@ export async function fetchMenuByName(): Promise<MenusResponse> {
 }
 
 export async function fetchPageBySlug(slug: string): Promise<PageBySlugResponse> {
-  const normalized = slug.toLowerCase().replace(/-/g, "_");
-  const data = dataMap[normalized];
+  const querySlug = slug === "/" ? "home" : slug;
+  const raw = await sanityFetch(PAGE_BY_SLUG_QUERY, { slug: querySlug });
+
+  const data = mapPageData(raw);
   if (!data) {
     return {
       success: false,
@@ -74,24 +223,16 @@ export async function fetchPageBySlug(slug: string): Promise<PageBySlugResponse>
 export async function fetchPagesSitemap(): Promise<{
   pages: Array<{ slug: string; updatedAt: string; changefreq?: string; priority?: string }>;
 }> {
-  const slugs = [
-    "home",
-    "oncology",
-    "movementdisorders",
-    "pediatric",
-    "dr_ekta",
-    "dr_mitesh",
-    "awareness",
-    "education_oncology",
-    "education_movementdisorders",
-    "education_pediatric",
-  ];
-  return {
-    pages: slugs.map((slug) => ({
-      slug: slug === "home" ? "" : slug,
-      updatedAt: new Date().toISOString(),
-      changefreq: "daily",
-      priority: slug === "home" ? "1.0" : "0.7",
-    })),
-  };
+  const raw: any[] = await sanityFetch(PAGES_SITEMAP_QUERY);
+  const pages = Array.isArray(raw)
+    ? raw
+        .filter((p) => p.slug)
+        .map((p) => ({
+          slug: p.slug === "home" ? "" : p.slug,
+          updatedAt: p.updatedAt as string,
+          changefreq: "daily",
+          priority: p.slug === "home" ? "1.0" : "0.7",
+        }))
+    : [];
+  return { pages };
 }
