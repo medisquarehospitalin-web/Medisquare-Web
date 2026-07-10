@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, CheckCircle2, Shield, Brain, Activity, Heart, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle2, Shield, Brain, Activity, Heart } from "lucide-react";
 import { getImageUrl } from "@/lib/utils";
 import Reveal from "@/components/site/Reveal";
 

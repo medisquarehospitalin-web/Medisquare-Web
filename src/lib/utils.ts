@@ -15,29 +15,37 @@ export function getSettingValue(
   return settings?.find((s) => s.key === key)?.value || fallback;
 }
 
-export function isValidImageUrl(url?: string) {
+export function isValidImageUrl(
+  url?: string | { fileUrl?: string; url?: string } | null,
+) {
   if (!url) return false;
+  const urlStr = typeof url === "string" ? url : url.fileUrl || url.url;
+  if (!urlStr) return false;
   return (
-    url.startsWith("/") ||
-    url.startsWith("http://") ||
-    url.startsWith("https://") ||
-    !url.includes(":")
+    urlStr.startsWith("/") ||
+    urlStr.startsWith("http://") ||
+    urlStr.startsWith("https://") ||
+    !urlStr.includes(":")
   );
 }
 
-export function getImageUrl(url?: string) {
+export function getImageUrl(
+  url?: string | { fileUrl?: string; url?: string } | null,
+) {
   if (!url) return "";
+  const urlStr = typeof url === "string" ? url : url.fileUrl || url.url;
+  if (!urlStr) return "";
   if (
-    url.startsWith("/") ||
-    url.startsWith("http://") ||
-    url.startsWith("https://")
+    urlStr.startsWith("/") ||
+    urlStr.startsWith("http://") ||
+    urlStr.startsWith("https://")
   ) {
-    return url;
+    return urlStr;
   }
   const fileBase =
     process.env.NEXT_PUBLIC_FILE_BASE_URL || "/";
   const base = fileBase.endsWith("/") ? fileBase : `${fileBase}/`;
-  return `${base}${url}`;
+  return `${base}${urlStr}`;
 }
 
 export async function fetchWithTimeout(

@@ -33,7 +33,6 @@ function mapPageData(raw: any): PageResponse | null {
     pageType: raw.pageType || "",
     schemaMarkup: raw.schemaMarkup,
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sections: Array.isArray(raw.sections)
       ? raw.sections
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -70,7 +69,7 @@ function mapPageData(raw: any): PageResponse | null {
             if (sectionData && typeof sectionData === "object") {
               cleanSectionData = Object.fromEntries(
                 Object.entries(sectionData).filter(
-                  ([_, v]) => v !== null && v !== undefined,
+                  ([, v]) => v !== null && v !== undefined,
                 ),
               );
             }
@@ -92,11 +91,13 @@ export async function fetchPageSections(pageType: string): Promise<PageResponse>
   const raw = await sanityFetch(PAGE_BY_TYPE_QUERY, {
     pageTypeName: pageType,
   });
+  console.log(raw,"rawrawraw");
 
   const page = mapPageData(raw);
   if (!page) {
     throw new Error(`No published page found for type "${pageType}"`);
   }
+  
   return page;
 }
 
@@ -167,7 +168,6 @@ export async function fetchMenuFront(): Promise<MenusResponse> {
         updatedAt: new Date().toISOString(),
         parentPage: null,
         segment: null,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         children: Array.isArray(item.children)
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ? item.children.map((child: any, cidx: number) => {
@@ -223,6 +223,7 @@ export async function fetchPageBySlug(slug: string): Promise<PageBySlugResponse>
 export async function fetchPagesSitemap(): Promise<{
   pages: Array<{ slug: string; updatedAt: string; changefreq?: string; priority?: string }>;
 }> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const raw: any[] = await sanityFetch(PAGES_SITEMAP_QUERY);
   const pages = Array.isArray(raw)
     ? raw

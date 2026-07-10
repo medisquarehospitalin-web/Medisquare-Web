@@ -54,17 +54,14 @@ export default async function Home() {
   try {
     pageData = await fetchPageSections("home");
     settings = await fetchSettings();
-  } catch (error) {
-    console.error("Error loading home page components:", error);
+  } catch  {
     return (
       <main className="flex min-h-screen items-center justify-center px-6 bg-white">
         <div className="text-center">
           <h1 className="mb-4 text-2xl font-bold text-gray-900">
             Unable to load page
           </h1>
-          <p className="text-gray-600">
-            Please check your local database files and try again.
-          </p>
+         
         </div>
       </main>
     );
