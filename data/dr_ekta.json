@@ -1,0 +1,31 @@
+{
+  "slug": "dr_ekta",
+  "title": "Dr. Ekta Vala Chandarana",
+  "metaTitle": "Dr. Ekta Vala Chandarana - Medical Oncologist in Ahmedabad",
+  "metaDescription": "Dr. Ekta Vala Chandarana is a superspecialist in Medical Oncology, treating breast cancer, lung cancer, and gynecological cancers at MediSquare Ahmedabad.",
+  "pageType": "doctor",
+  "sections": [
+    {
+      "id": "sec-dr-ekta-profile",
+      "sectionType": "doctor_profile",
+      "sortOrder": 1,
+      "sectionData": {
+        "name": "DR EKTA VALA CHANDARANA",
+        "specialty": "oncology",
+        "photo": "/assets/img/dp_ekta.jpg",
+        "bio": "Dr. Ekta Vala Chandarana is a superspecialist in the field of Oncology. She has completed her DM in Medical Oncology/ hemato oncology from Asia's eminent civil hospital (Gujarat Cancer And Research Institute, Ahmedabad).<br><br>She deals with cancer patients. Facilities available with her is oncology OPD, Indoor admission, ICU admission, Day care chemotherapy administration, cancer screening (routine checkup) and cancer vaccination, genetic testing and counseling, de addiction counseling and treatment, central line (PICC and port insertion) and treatment with immunotherapy and targeted therapy, bone marrow evaluation & intrathecal chemotherapy. She has treated 20000+ patients with cancer disease till 2021. She is specifically more interested in treating breast cancer, gynecological cancers (ovary, uterus, cervix), lung cancer, head and neck cancer and hematological cancers like leukemia, lymphoma and myeloma. She is academically excellent, good listener, kind and caring in nature. Dr. Ekta is complete solution to all cancer related issues.<br><br>She has published articles in various National and International journals. She has also been co-investigator in a clinical trial conducted at Gujarat Cancer and Research Institute and at Shalby hospitals.",
+        "socials": {
+          "facebook": "https://www.facebook.com/Dr-Ekta-Vala-Chandarana-Cancer-Physician-Superspecialist-103304598038655/",
+          "instagram": "https://www.instagram.com/drektavalachandarana/?hl=en",
+          "linkedin": "https://in.linkedin.com/in/dr-ekta-vala-chandarana-3280071b0"
+        },
+        "qualifications": [
+          "• EMCO<br>(European board Certified Medical Oncology)",
+          "• D.M.<br>(Medical Oncology & Hematology)<br>The Gujarat Cancer & Research Institute, Ahmedabad",
+          "• M.D.<br>(General Medicine)<br>Civil Hospital, B.J. Medical College, Ahmedabad",
+          "• MBBS<br>NHL MMC, Ahmedabad"
+        ]
+      }
+    }
+  ]
+}

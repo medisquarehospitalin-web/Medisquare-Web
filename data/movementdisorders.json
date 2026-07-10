@@ -1,0 +1,100 @@
+{
+  "slug": "movementdisorders",
+  "title": "Movement Disorders",
+  "metaTitle": "Movement Disorders Clinic - MediSquare Hospital",
+  "metaDescription": "Specialized clinic for Parkinson's disease, tremors, dystonia, chorea, Deep Brain Stimulation (DBS), and Botulinum Toxin therapy.",
+  "pageType": "clinic",
+  "sections": [
+    {
+      "id": "sec-movement-highlights",
+      "sectionType": "clinic_highlights",
+      "sortOrder": 1,
+      "sectionData": {
+        "badgeText": "HIGHLIGHTS",
+        "title": "Movement Disorders Clinic",
+        "titleHighlight": "Highlights",
+        "cards": [
+          {
+            "id": "movement-treatment",
+            "title": "Movement Disorders Treatment",
+            "image": "/assets/img/ex_img_movement.jpg",
+            "modalContent": null
+          },
+          {
+            "id": "dbs",
+            "title": "Deep Brain Stimulation",
+            "image": "/assets/img/ex_img_dbs.png",
+            "modalContent": {
+              "title": "Deep Brain Stimulation",
+              "body": "Deep brain stimulation is a neurosurgical procedure which can be done for treatment of various movement disorders such as Parkinson’s disease, dystonia, essential tremors and Tourette syndrome as well as some other disorders of brain. It involves the implantation of a neurostimulator (a brain pacemaker) in the chest area beneath skin which sends electrical energy in pulses through extension wires to implanted electrodes in the specific regions of brain such as subthalamic nucleus, globus pallidus interna and thalamus.<br><br><strong>Deep Brain Stimulation for Parkinson’s disease</strong><br><br>Parkinson’s disease is a degenerative disease of the brain. Tremors at rest, stiffness of body, slowness of all daily activities and imbalance while walking are cardinal symptoms of Parkinson’s disease. With the progression of disease, the response of medications wane off gradually and patients develop motor fluctuations in form of medications related OFF period and dyskinesia (abnormal involuntary dance like movements of body) during drug ON time. Deep brain stimulation can be considered at this stage of Parkinson’s disease as these fluctuations are generally refractory to oral medications and respond well to surgery. All cardinal symptoms mentioned above respond well to DBS. The usual areas of target of DBS for Parkinson’s disease are subthalamic nucleus (STN) and globus pallidus interna (GPi).<br><br><strong>Steps for DBS surgery:</strong><br><br>• Preoperative evaluation:<br>Before surgery, a dedicated movement disorders specialist evaluates the patient in detail for his symptoms and conducts a oral levodopa challenge test. A comprehensive neuropsychological assessment by a neuropsychologist is also necessary before surgery.<br><br>• Intraoperative:<br>The DBS surgery is done in two phases. In the first phase, electrodes are implanted in the brain under stereotactic guidance, during which patient remains awake. While, in the second phase of surgery, implantable pulse generator (IPG) battery or pacemaker is implanted in the chest, which is connected to brain electrodes via extension wires.<br><br>• Postoperative:<br>One to two weeks after surgery, the movement disorders specialist switches on the IPG battery and does programming of the same. The optimal settings require few days to weeks.<br><br><strong>Deep brain stimulation for dystonia</strong><br><br>Dystonia is defined as any abnormal twisting movement or posture or both of any body part, which can be continuous or intermittent. The usual brain target of DBS surgery for dystonia is globus pallidus interna (GPi). It is usually performed in cases of segmental or generalized dystonia. Dystonia usually takes longer time to resolve after the surgery and IPG battery programming.<br><br><strong>Deep brain stimulation for essential tremor</strong><br><br>Essential tremor is one of the commonest cause of tremors. It can be familial or non-familial. It usually occurs in both hands while doing activities with hands such as holding a glass or cup of tea, shaving etc. However, it can also occur in other body parts such as head, tongue, voice or jaw. Surgical therapies are usually considered in essential tremor when symptoms are not adequately controlled with maximally tolerated dose of oral medications. The usual brain target of DBS surgery for essential tremor is Ventral Intermediate Nucleus (VIM) of the thalamus."
+            }
+          },
+          {
+            "id": "botu",
+            "title": "Botulinum Toxin",
+            "image": "/assets/img/ex_img_boto.jpg",
+            "modalContent": {
+              "title": "Botulinum Toxin Clinic",
+              "body": "<strong>What is Botulinum Toxin therapy and how does it act?</strong><br><br>Botulinum toxin is a neurotoxin produced by bacterium clostridium botulinum. It acts by blocking acetylcholine (a neurotransmitter) involved in muscle contraction, and thereby relaxes the overacting muscle.<br><br><strong>How is botulinum toxin injected?</strong><br><br>The movement disorder specialist assesses the patient clinically and decides the number of muscles to be injected and dose of botulinum toxin for each muscle. It is injected using a thin needle. Many a times, it is injected under electromyography (EMG) machine guidance to maximize the accuracy of injections and reduce the side effects. These injections are usually safe when given by Movement disorders expert physician.<br><br><strong>In which different medical conditions does botulinum toxin work?</strong><br><br>Botulinum toxin is used for various types of dystonia, hemifacial spasm, tremors, spasticity, migraine, hyperhidrosis, spastic overactive bladder and others. At our botulinum toxin clinic, we provide services of injecting botulinum toxin for variety of movement disorders such as:<br><br>• Various types of dystonia (blepharospasm, writer’s cramp, oromandibular dystonia, cervical dystonia, spasmodic dysphonia and limb dystonia)<br>• Hemifacial spasm<br>• Tremors (hands, head)<br>• Spasticity of limbs (Post stroke or due to cerebral palsy)<br>• Motor tics refractory to medications<br>• Migraine<br><br><strong>What is the duration of effect of botulinum toxin therapy?</strong><br><br>The effect of botulinum toxin starts within 3-4 days and it reaches its maximal effect within 10-14 days. This effect is sustained for 3-4 months."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sec-movement-facilities",
+      "sectionType": "clinic_facilities",
+      "sortOrder": 2,
+      "sectionData": {
+        "badgeText": "FACILITIES",
+        "title": "Movement Disorders Clinic",
+        "titleHighlight": "Facilities",
+        "cards": [
+          {
+            "id": "fac-pd-clinic",
+            "title": "Dedicated Parkinson's Disease and Movement Disorders Clinic",
+            "icon": "/assets/img/ico_parkin.svg"
+          },
+          {
+            "id": "fac-physio",
+            "title": "Neuro-Physiotherapy",
+            "icon": "/assets/img/ico_brain_physio.svg"
+          },
+          {
+            "id": "fac-edu",
+            "title": "Patient Education",
+            "icon": "/assets/img/ico_couns.svg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sec-movement-treatment",
+      "sectionType": "conditions_list",
+      "sortOrder": 3,
+      "sectionData": {
+        "badgeText": "TREATMENT",
+        "title": "Conditions We",
+        "titleHighlight": "Treat",
+        "col1": [
+          "Parkinson’s disease as well as atypical parkinsonian syndromes such as PSP, MSA, DLB, CBS",
+          "Tremors",
+          "Various dystonia such as blepharospasm, Writer’s cramp, oromandibular, and cervical dystonia.",
+          "Chorea / Huntington’s disease",
+          "Myoclonic jerks",
+          "Ataxia syndromes",
+          "Tics and Tourette syndrome"
+        ],
+        "col2": [
+          "Wilson’s disease",
+          "Hemifacial spasm",
+          "Botulinum toxin injection administration for various dystonia and spasticity",
+          "Deep brain stimulation (DBS) planning, evaluation, and programming for various indications",
+          "Tardive syndrome (drug induced movement disorders)",
+          "Functional movement disorders",
+          "Restless legs syndrome / RBD"
+        ]
+      }
+    }
+  ]
+}

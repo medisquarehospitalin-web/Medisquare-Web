@@ -1,0 +1,18 @@
+{
+  "slug": "education_pediatric",
+  "title": "Pediatric Nephrology - Patient Education",
+  "metaTitle": "Patient Education Pediatric Nephrology - MediSquare Hospital",
+  "metaDescription": "Patient education resources for Pediatric Nephrology at MediSquare. Coming soon.",
+  "pageType": "education",
+  "sections": [
+    {
+      "id": "sec-edu-pediatric-comingsoon",
+      "sectionType": "coming_soon",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Coming",
+        "titleHighlight": "Soon"
+      }
+    }
+  ]
+}

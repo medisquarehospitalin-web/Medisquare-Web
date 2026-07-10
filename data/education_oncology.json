@@ -1,0 +1,18 @@
+{
+  "slug": "education_oncology",
+  "title": "Medical Oncology - Patient Education",
+  "metaTitle": "Patient Education Medical Oncology - MediSquare Hospital",
+  "metaDescription": "Patient education materials and guidelines for Medical Oncology at MediSquare. Coming soon.",
+  "pageType": "education",
+  "sections": [
+    {
+      "id": "sec-edu-oncology-comingsoon",
+      "sectionType": "coming_soon",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Coming",
+        "titleHighlight": "Soon"
+      }
+    }
+  ]
+}

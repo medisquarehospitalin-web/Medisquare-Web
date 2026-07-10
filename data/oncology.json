@@ -1,0 +1,156 @@
+{
+  "slug": "oncology",
+  "title": "Medical Oncology",
+  "metaTitle": "Medical Oncology Clinic - MediSquare Hospital",
+  "metaDescription": "Top superspecialist in Medical Oncology dealing with breast cancer, lung cancer, blood cancers, chemotherapy, immunotherapy, and targeted therapies.",
+  "pageType": "clinic",
+  "sections": [
+    {
+      "id": "sec-oncology-highlights",
+      "sectionType": "clinic_highlights",
+      "sortOrder": 1,
+      "sectionData": {
+        "badgeText": "HIGHLIGHTS",
+        "title": "Medical Oncology Clinic",
+        "titleHighlight": "Highlights",
+        "cards": [
+          {
+            "id": "chemo",
+            "title": "Chemotherapy",
+            "image": "/assets/img/ex_img_chemo.jpg",
+            "modalContent": {
+              "title": "Chemotherapy",
+              "body": "Chemotherapy is a type of cancer treatment that uses one or more anti-cancer drugs as a part of a standardized chemotherapy regimen. Early-stage cancers need adjuvant chemotherapy to cure the disease. Advanced stage cancers will need chemotherapy to cure or control the disease and thereby prolong life with improved quality. Sometimes chemotherapy is given along with radiation and is called concurrent chemotherapy. Newer therapies like targeted therapy and immunotherapy are also given in combination or in sequence of chemotherapy. It has established to become an inescapable necessity for the treatment of cancer in many cases.<br><br>Chemotherapy type, dose, frequency is decided by Medical oncologist based on your disease, stage, age, fitness, comorbidities, finances, etc. Chemotherapy drugs and supportive medicines have improved drastically over the last decade and hence toxicity/side effects of the drug have decreased substantially.<br><br>Our decisions to choose chemotherapy agents are highly evidence based at the same time born out of wisdom developed by our consultant for treating Indian patients.<br><br>Some facts of Chemotherapy:<br><br>• Not all the chemotherapy drugs cause hair loss<br>• Hair loss caused by chemotherapy is not permanent<br>• It does not cause side effects in each patient. Many patients tolerate it very well<br>• Most side effects are temporary and last for 5 to 7 days<br>• It is either given in injectable form or in tablet/ capsule form<br>• Patient on chemotherapy can continue his/ her routine normal lifestyle"
+            }
+          },
+          {
+            "id": "immuno",
+            "title": "Immunotherapy",
+            "image": "/assets/img/ex_img_immu.jpg",
+            "modalContent": {
+              "title": "Immunotherapy",
+              "body": "Immunotherapy is the new, emerging and a promising concept in cancer treatment. It acts on the body’s immune cells and improves the function of immune cells to recognize and destroy cancer. The side effect profile of immunotherapy is completely different from conventional chemotherapy. In many cases, it complements chemotherapy, helping patients with good treatment outcomes. We have qualified faculty who has rich experience using immunotherapy in our cancer patients and we are proud to have produced satisfactory results for patients. Immunotherapy can be easily administered in day care setting and does not require hospital admissions.<br><br>Immunotherapy is not advised for every patient.<br><br>Immunotherapy is used in:<br><br>• Lung cancer<br>• Melanoma<br>• Breast cancer<br>• Hodgkins and non-hodgkins Lymphoma<br>• Renal cell carcinoma<br>• Head and Neck Cancer<br>• Urinary bladder cancer<br>• MSI high cancers (colon, endometrial, etc)"
+            }
+          },
+          {
+            "id": "target",
+            "title": "Targeted Therapy",
+            "image": "/assets/img/ex_img_target.jpg",
+            "modalContent": {
+              "title": "Targeted Therapy",
+              "body": "Targeted therapy is a type of systemic therapy. It is directed generally to a specific mutation/receptor in cancer cells as opposed to chemotherapy which is less specific for cancer cells. Generally targeted therapy is in oral form though some might be in intravenous form and have toxicity profile different than conventional chemotherapy.<br><br>Though targeted therapy is easy to take as most are in oral form, it has to be taken under supervision of Medical Oncologist as they have their own side effects. So adequate monitoring is must.<br><br>Targeted therapy is widely used in following malignancies:<br><br>• Breast cancer<br>• Ovary cancer<br>• Thyroid cancer<br>• Chronic leukemias (blood cancer)<br>• Lung cancer<br>• Renal cell carcinoma (kidney cancer)<br>• Hepatocellular carcinoma (liver cancer)<br>• Lymphomas<br><br>We have qualified faculty who has specialized in targeted therapy. We are proud to have produced excellent results for patients. We also provide financial assistance through social worker and make therapy available at cheaper rate. Targeted therapy can be easily administered in day care setting and does not require overnight stay."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sec-oncology-facilities",
+      "sectionType": "clinic_facilities",
+      "sortOrder": 2,
+      "sectionData": {
+        "badgeText": "FACILITIES",
+        "title": "Medical Oncology Clinic",
+        "titleHighlight": "Facilities",
+        "cards": [
+          {
+            "id": "intrathecal",
+            "title": "Intrathecal Chemotherapy",
+            "icon": "/assets/img/ico_chemo.svg",
+            "modalContent": {
+              "title": "Intrathecal Chemotherapy",
+              "body": "<strong>What is Intra-thecal chemotherapy?</strong><br><br>Anticancer drugs are injected into the intrathecal space, which is the space that holds the cerebrospinal fluid (CSF, shown in blue). In this, the drug is directly injected into the CSF in the lower part of the spinal column.<br><br><strong>Intrathecal chemotherapy is used:</strong><br><br>• To treat cancer that has spread to the CSF<br>• To prevent cancer from spreading to the CSF"
+            }
+          },
+          {
+            "id": "bonemarrow",
+            "title": "Bone Marrow Evaluation",
+            "icon": "/assets/img/ico_bonemarrow.svg",
+            "modalContent": {
+              "title": "Bone Marrow Evaluation",
+              "body": "Bone marrow is the spongy material inside long bones, pelvis, clavicle that produces all blood cells – red blood cells (RBCs), white blood cells (WBCs) and platelets. Bone marrow also contains raw materials that are important for manufacturing of blood cells, such as iron, vitamin B12, and folic acid.<br><br><strong>What is bone marrow examination?</strong><br><br>A bone marrow examination usually consists of two separate tests that are often done at the same time; a bone marrow aspiration that obtains a sample of the liquid portion of the bone marrow from which special tests can be done, and a bone marrow biopsy that obtains a sample of the solid material. The most common site for a bone marrow biopsy is the large pelvic bone near the hip (posterior iliac crest), but a sample may also be taken from the sternum (breastbone), or, in infants, the shin bone (tibia).<br><br><strong>When is bone marrow examination indicated?</strong><br><br>• Unexplained abnormal increase/decrease in any of the blood cells<br>• Diagnosis, workup and follow up of blood cancers like leukemia and lymphoma, or for some cancers spreading to involve bone marrow.<br>• For work up of fever of unknown origin<br>• Some rare genetic syndromes"
+            }
+          },
+          {
+            "id": "genetic",
+            "title": "Genetic Counselling",
+            "icon": "/assets/img/ico_genetic.svg",
+            "modalContent": {
+              "title": "Genetic Counselling",
+              "body": "<strong>What is Genetic counselling?</strong><br><br>Certain cancers run in family and it is very important to identify them. Genetic testing helps to prevent second malignancy (other cancers) in the index patient and also cancer in other family members. If detected on time than appropriate screening or risk reduction surgeries can be very helpful in patient/relatives.<br><br>Testing for Hereditary cancer is not foolproof and understanding nuances of investigation is important before testing. Equally important is an understanding of results, available steps, pros, and cons, etc.<br><br>So if you have a family history or are having cancers at a young age (especially breast cancer, colon cancer) or history of multiple cancers, is advisable to consider genetic counselling. Generally tests for genetic testing are taken from blood or by swab from your mouth."
+            }
+          },
+          {
+            "id": "screening",
+            "title": "Cancer Screening and Prevention",
+            "icon": "/assets/img/ico_screen.svg",
+            "modalContent": {
+              "title": "Cancer Screening and Prevention",
+              "body": "<strong>What is cancer screening?</strong><br><br>Cancer screening is a test through which we can detect cancer at earlier stages. Screening is available for breast cancer, cervix cancer, prostate cancer, colon cancer etc.<br><br>We at our center educate general public through educational videos and awareness lectures regarding importance of screening especially mammography for breast and Pap test for cervix cancers as these are the two most common cancers in women in our country."
+            }
+          },
+          {
+            "id": "vaccination",
+            "title": "Cancer Vaccination",
+            "icon": "/assets/img/ico_cancer_vacc.svg",
+            "modalContent": {
+              "title": "Cancer Vaccination",
+              "body": "<strong>What is cancer vaccine?</strong><br><br>Cancer vaccine is a vaccine which can prevent development of cancer. As of now two vaccines are approved:<br><br>1) Human papilloma virus vaccine for prevention of cervical cancer<br>2) Hepatitis vaccine for prevention of liver cancer<br><br>We at our center educate people regarding importance of vaccination through awareness videos and in person counselling."
+            }
+          },
+          {
+            "id": "deaddiction",
+            "title": "De-Addiction Counselling & Treatment",
+            "icon": "/assets/img/ico_couns.svg",
+            "modalContent": {
+              "title": "De-Addiction Counselling and Treatment",
+              "body": "Tobacco addiction in any form can cause many cancers like tongue, buccal mucosa, pharynx, larynx, esophagus, lung, stomach, pancreas, liver, kidney, colon etc.<br><br>We at our center provide de addiction counselling to all our patients and treat if needed."
+            }
+          },
+          {
+            "id": "pain",
+            "title": "Pain and Palliative Care",
+            "icon": "/assets/img/noun_palliative care_2692536.svg",
+            "modalContent": {
+              "title": "Pain and Palliative Care",
+              "body": "<strong>What is Palliative care?</strong><br><br>It is a pervasive fact that patients with advanced stages (stage 4) of cancer are difficult to treat and usually lead to poor outcomes. They are in extreme pain and discomfort in such a terminal stage. We have expertise to undertake palliative treatment for such patients which can help to subside their symptoms so that patient can be offered utmost comfort and reasonable quality of life if not cure of disease. Palliative treatments are offered when disease of patient progress despite mainstay treatments and nothing but controlling symptoms for comfort of patient is the only option left for cancer physician."
+            }
+          },
+          {
+            "id": "nutrition",
+            "title": "Nutrition",
+            "icon": "/assets/img/noun_Nutrition_2129347.svg",
+            "modalContent": {
+              "title": "Nutrition",
+              "body": "Many of the chemotherapy drugs take a toll on the diet and nutrition of patients in some or the other way due to nausea/vomiting, altered taste sensation, altered smell, and gastritis. Cancer itself leads to loss of appetite. Cancer patients on the contrary need more calories than a normal patient. Even their daily protein requirement is more.<br><br>We have seen often that once a patient is diagnosed with cancer, the patient starts taking a lot of fruit juice, fruits, dry fruits, etc. These food items are good as supplements but the focus should remain more on calories and protein."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sec-oncology-treatment",
+      "sectionType": "conditions_list",
+      "sortOrder": 3,
+      "sectionData": {
+        "badgeText": "TREATMENT",
+        "title": "Conditions We",
+        "titleHighlight": "Treat",
+        "col1": [
+          "Breast cancer",
+          "Gynecological cancers",
+          "Head and neck cancers",
+          "Lung cancer",
+          "Blood cancers like leukemia, lymphoma, etc."
+        ],
+        "col2": [
+          "Kidney cancer",
+          "Urinary bladder cancer",
+          "Gastric cancer",
+          "Liver and gallbladder cancer",
+          "Colorectal cancer"
+        ]
+      }
+    }
+  ]
+}

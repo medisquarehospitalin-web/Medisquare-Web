@@ -1,0 +1,18 @@
+{
+  "slug": "pediatric",
+  "title": "Pediatric Nephrology",
+  "metaTitle": "Pediatric Nephrology - MediSquare Hospital",
+  "metaDescription": "MediSquare specializes in diagnosis and treatment of children with acute and chronic kidney-related disorders. Pediatric Nephrology clinic is coming soon.",
+  "pageType": "clinic",
+  "sections": [
+    {
+      "id": "sec-pediatric-comingsoon",
+      "sectionType": "coming_soon",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Coming",
+        "titleHighlight": "Soon"
+      }
+    }
+  ]
+}
