@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Shield, Brain, Activity, Heart, Stethoscope } from "lucide-react";
 import { getImageUrl } from "@/lib/utils";
 import Reveal from "@/components/site/Reveal";
 
@@ -13,13 +14,30 @@ interface SlideImage {
   altText?: string;
 }
 
+interface CTA {
+  label: string;
+  href: string;
+}
+
 interface SlideData {
+  titlePrefix?: string;
+  titleHighlight?: string;
+  subtitle?: string;
+  badge?: string;
   image?: SlideImage;
+  primaryCta?: CTA;
+  secondaryCta?: CTA;
 }
 
 interface HeroSliderProps {
   data: {
     slides?: SlideData[];
+    specialties?: Array<{
+      name: string;
+      icon: string;
+      link: string;
+    }>;
+    highlights?: string[];
   };
 }
 
@@ -38,11 +56,43 @@ export default function HeroSlider({ data }: HeroSliderProps) {
   if (slides.length === 0) return null;
 
   const currentSlide = slides[activeIndex];
-  const imageSrc = getImageUrl(currentSlide?.image?.fileUrl);
+  const imageSrc = getImageUrl(currentSlide?.image?.fileUrl) || "/assets/img/carou_lobby.jpg";
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const getSpecialtyIcon = (iconName?: string) => {
+    const name = iconName?.toLowerCase() || "";
+    if (name.includes("shield")) return <Shield className="h-5 w-5" />;
+    if (name.includes("brain")) return <Brain className="h-5 w-5" />;
+    if (name.includes("activity")) return <Activity className="h-5 w-5" />;
+    if (name.includes("heart")) return <Heart className="h-5 w-5" />;
+    return <Stethoscope className="h-5 w-5" />;
+  };
+
+  const renderCtaButton = (cta?: CTA, isPrimary = true) => {
+    if (!cta?.label || !cta?.href) return null;
+    const isHash = cta.href.startsWith("#");
+    const className = isPrimary
+      ? "bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold text-sm hover:scale-[1.03] active:scale-95 transition-all duration-200 cursor-pointer inline-block text-center"
+      : "border-2 border-slate-300 hover:border-primary hover:text-primary text-slate-700 px-8 py-2.5 rounded-lg font-semibold text-sm hover:scale-[1.03] active:scale-95 transition-all duration-200 cursor-pointer hover:bg-primary/5 transition-all inline-block text-center";
+
+    if (isHash) {
+      const sectionId = cta.href.substring(1);
+      return (
+        <button onClick={() => scrollToSection(sectionId)} className={className}>
+          {cta.label}
+        </button>
+      );
+    }
+
+    return (
+      <Link href={cta.href} className={className}>
+        {cta.label}
+      </Link>
+    );
   };
 
 
@@ -83,26 +133,30 @@ export default function HeroSlider({ data }: HeroSliderProps) {
         <Reveal>
           <div className="inline-flex items-center gap-2 bg-primary/5 px-4 py-1.5 rounded-full border border-primary/20 text-primary text-xs font-bold tracking-wider uppercase w-fit">
             <span className="h-2 w-2 rounded-full bg-primary animate-ping" />
-            <span>Ahmedabad&apos;s Premier Medical Institute</span>
+            <span>{currentSlide?.badge || "Ahmedabad's Premier Medical Institute"}</span>
           </div>
         </Reveal>
 
         {/* Dynamic Bold Typography (Light Theme) */}
         <Reveal>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.2] max-w-4xl">
-            MediSquare{" "}
+            {currentSlide?.titlePrefix || "MediSquare"}{" "}
             <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">
-              Hospital
-            </span>{" "}
-            <br className="hidden md:inline" />
-            & Research Institute
+              {currentSlide?.titleHighlight || "Hospital"}
+            </span>
+            {(!currentSlide?.titlePrefix && !currentSlide?.titleHighlight) && (
+              <>
+                <br className="hidden md:inline" />
+                & Research Institute
+              </>
+            )}
           </h1>
         </Reveal>
 
         {/* Subdescription (Light Theme) */}
         <Reveal>
           <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium max-w-2xl">
-            Providing world-class medical services in Oncology, Neurology, and Pediatric Nephrology, powered by state-of-the-art facilities.
+            {currentSlide?.subtitle || "Providing world-class medical services in Oncology, Neurology, and Pediatric Nephrology, powered by state-of-the-art facilities."}
           </p>
         </Reveal>
 
@@ -110,44 +164,67 @@ export default function HeroSlider({ data }: HeroSliderProps) {
         {/* Action Triggers */}
         <Reveal>
           <div className="flex flex-wrap items-center gap-3.5 mt-2">
-            <button
-              onClick={() => scrollToSection("sec-contact-appointment")}
-              className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold text-sm hover:scale-[1.03] active:scale-95 transition-all duration-200 cursor-pointer"
-            >
-              Book Appointment
-            </button>
-            <button
-              onClick={() => scrollToSection("sec-clinics-grid")}
-              className="border-2 border-slate-300 hover:border-primary hover:text-primary text-slate-700 px-8 py-2.5 rounded-lg font-semibold text-sm hover:scale-[1.03] active:scale-95 transition-all duration-200 cursor-pointer hover:bg-primary/5 transition-all"
-            >
-              View Specialties
-            </button>
+            {currentSlide?.primaryCta ? renderCtaButton(currentSlide.primaryCta, true) : (
+              <button
+                onClick={() => scrollToSection("sec-contact-appointment")}
+                className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold text-sm hover:scale-[1.03] active:scale-95 transition-all duration-200 cursor-pointer"
+              >
+                Book Appointment
+              </button>
+            )}
+            {currentSlide?.secondaryCta ? renderCtaButton(currentSlide.secondaryCta, false) : (
+              <button
+                onClick={() => scrollToSection("sec-clinics-grid")}
+                className="border-2 border-slate-300 hover:border-primary hover:text-primary text-slate-700 px-8 py-2.5 rounded-lg font-semibold text-sm hover:scale-[1.03] active:scale-95 transition-all duration-200 cursor-pointer hover:bg-primary/5 transition-all"
+              >
+                View Specialties
+              </button>
+            )}
           </div>
         </Reveal>
 
       </div>
+
+      {/* Floating Specialties Grid */}
+      {data.specialties && data.specialties.length > 0 && (
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 -mt-16 mb-6 hidden md:block">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {data.specialties.map((spec, idx) => (
+              <Link
+                key={idx}
+                href={spec.link || "#"}
+                className="flex items-center gap-4 bg-white/95 backdrop-blur-sm border border-slate-100 hover:border-primary p-4.5 rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
+              >
+                <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-orange-50 text-primary border border-orange-100 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  {getSpecialtyIcon(spec.icon)}
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-800 group-hover:text-primary transition-colors">
+                    {spec.name}
+                  </h4>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Footer Row & Navigation (Light Theme) */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-6 border-t border-slate-200/80 pt-6">
         
         {/* Dynamic checkmark row */}
         <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-xs md:text-sm font-bold text-slate-600">
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4.5 w-4.5 text-primary flex-shrink-0" />
-            <span>Expert Oncologists</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4.5 w-4.5 text-primary flex-shrink-0" />
-            <span>Movement Disorder Speciality</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4.5 w-4.5 text-primary flex-shrink-0" />
-            <span>5-Bedded Day Care Center</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4.5 w-4.5 text-primary flex-shrink-0" />
-            <span>Full-Scale Pharmacy</span>
-          </div>
+          {(data.highlights || [
+            "Expert Oncologists",
+            "Movement Disorder Speciality",
+            "5-Bedded Day Care Center",
+            "Full-Scale Pharmacy"
+          ]).map((highlight, idx) => (
+            <div key={idx} className="flex items-center gap-2">
+              <CheckCircle2 className="h-4.5 w-4.5 text-primary flex-shrink-0" />
+              <span>{highlight}</span>
+            </div>
+          ))}
         </div>
 
 

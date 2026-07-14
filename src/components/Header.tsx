@@ -6,11 +6,14 @@ import { ChevronDown, Menu, X, Phone, MapPin, Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
+import { getSettingValue } from "@/lib/utils";
+
 interface HeaderProps {
   menu?: Menu[];
+  settings?: Setting[];
 }
 
-export default function Header({ menu }: HeaderProps) {
+export default function Header({ menu, settings }: HeaderProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -67,12 +70,12 @@ export default function Header({ menu }: HeaderProps) {
           <div className="w-full max-w-7xl mx-auto h-full flex items-center justify-end gap-6 px-6 lg:px-8 text-[11px] font-semibold text-slate-500 pl-[280px]">
             <div className="flex items-center gap-1.5">
               <MapPin className="h-3.5 w-3.5 text-slate-450" />
-              <span>O 201-202, Gala Empire, Drive In Road, Gurukul, Ahmedabad</span>
+              <span>{getSettingValue(settings, "hospital_address", "O 201-202, Gala Empire, Drive In Road, Gurukul, Ahmedabad")}</span>
             </div>
             <span className="h-3 w-px bg-slate-200" />
-            <a href="mailto:contact@medisquare.in" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+            <a href={`mailto:${getSettingValue(settings, "hospital_email", "contact@medisquare.in")}`} className="flex items-center gap-1.5 hover:text-primary transition-colors">
               <Mail className="h-3.5 w-3.5 text-slate-450" />
-              <span>contact@medisquare.in</span>
+              <span>{getSettingValue(settings, "hospital_email", "contact@medisquare.in")}</span>
             </a>
           </div>
         </div>
@@ -181,7 +184,7 @@ export default function Header({ menu }: HeaderProps) {
         {/* CTA Actions */}
         <div className="flex items-center gap-4">
           <a
-            href="tel:08866843843"
+            href={`tel:${getSettingValue(settings, "hospital_phone", "+91 8866 843 843").replace(/\s+/g, "")}`}
             className="hidden sm:flex items-center gap-2.5 group"
           >
             <div className="h-10 w-10 rounded-full border border-slate-250 text-primary flex items-center justify-center transition-all duration-200 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
@@ -189,7 +192,7 @@ export default function Header({ menu }: HeaderProps) {
             </div>
             <div className="flex flex-col text-left">
               <span className="text-[10px] font-bold text-slate-450 tracking-wider leading-none">Emergency? Call us!</span>
-              <span className="text-sm font-bold text-slate-800 transition-colors group-hover:text-primary leading-tight mt-1">+91 8866 843 843</span>
+              <span className="text-sm font-bold text-slate-800 transition-colors group-hover:text-primary leading-tight mt-1">{getSettingValue(settings, "hospital_phone", "+91 8866 843 843")}</span>
             </div>
           </a>
 
@@ -290,11 +293,11 @@ export default function Header({ menu }: HeaderProps) {
 
         <div className="mt-auto border-t border-slate-100 pt-6">
           <a
-            href="tel:08866843843"
+            href={`tel:${getSettingValue(settings, "hospital_phone", "+91 8866 843 843").replace(/\s+/g, "")}`}
             className="flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-xl font-bold text-sm shadow hover:bg-primary-dark transition-colors"
           >
             <Phone className="h-4 w-4" />
-            <span>Call +91 8866 843 843</span>
+            <span>Call {getSettingValue(settings, "hospital_phone", "+91 8866 843 843")}</span>
           </a>
         </div>
       </div>

@@ -9,10 +9,10 @@ import { ArrowRight, CheckCircle2, Stethoscope } from "lucide-react";
 interface TeamMember {
   name: string;
   designation: string;
-  photo: {
+  photo?: {
     fileUrl: string;
     altText?: string;
-  };
+  } | null;
   bio: string;
   link: string;
 }
@@ -72,13 +72,15 @@ export default function TeamGridSection({ data }: TeamGridProps) {
                         </div>
                       </div>
 
-                      <Image
-                        src={getImageUrl(member.photo.fileUrl)}
-                        alt={member.photo.altText || member.name}
-                        fill
-                        sizes="(max-width:768px) 100vw, 50vw"
-                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      />
+                      {member.photo?.fileUrl && (
+                        <Image
+                          src={getImageUrl(member.photo.fileUrl)}
+                          alt={member.photo.altText || member.name}
+                          fill
+                          sizes="(max-width:768px) 100vw, 50vw"
+                          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        />
+                      )}
                       
                       <div className="pointer-events-none absolute inset-0 rounded-xl border border-black/5" />
                     </div>

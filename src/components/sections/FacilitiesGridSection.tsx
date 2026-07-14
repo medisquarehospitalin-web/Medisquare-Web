@@ -33,16 +33,18 @@ export default function FacilitiesGridSection({ data }: FacilitiesGridProps) {
           </Reveal>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.cards.map((card, idx) => (
+          {(data.cards || []).map((card, idx) => (
             <Reveal key={idx} delay={idx * 0.06}>
               <div className="group flex items-center gap-5 p-4.5 rounded-xl bg-slate-50/50 border border-slate-200/65 hover:bg-white hover:border-primary/20 transition-all duration-300">
                 <div className="relative h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-accent group-hover:bg-primary border border-transparent transition-all duration-300">
-                  <Image
-                    src={getImageUrl(card.icon)}
-                    alt={card.title}
-                    fill
-                    className="object-contain p-2.5 brightness-0 invert transition-all duration-300"
-                  />
+                  {card.icon && (
+                    <Image
+                      src={getImageUrl(card.icon)}
+                      alt={card.title}
+                      fill
+                      className="object-contain p-2.5 brightness-0 invert transition-all duration-300"
+                    />
+                  )}
                 </div>
                 {/* Title */}
                 <h3 className="text-sm md:text-base font-bold text-secondary group-hover:text-primary transition-colors leading-snug">

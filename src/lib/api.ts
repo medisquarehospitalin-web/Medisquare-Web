@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { sanityClient } from "./sanity";
 import {
   ALL_SITE_DETAILS_QUERY,
@@ -144,14 +145,13 @@ export async function fetchMenuFront(): Promise<MenusResponse> {
   }
 
   const items = raw.items
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .filter((item: any) => item && item.status === 1)
     .sort((a: any, b: any) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .map((item: any, idx: number) => {
       let link = "#";
       if (item.linkType === "page") {
         const slug = item.pageSlug || "";
-        link = slug === "home" || slug === "/" ? "/" : `/${slug}`;
+        link = slug === "home" || slug === "/" ? "/" : slug ? `/${slug}` : "#";
       } else {
         link = item.externalLink || "#";
       }
@@ -162,7 +162,7 @@ export async function fetchMenuFront(): Promise<MenusResponse> {
         link,
         parentPageId: null,
         sortOrder: item.sortOrder ?? idx,
-        status: item.status === 1 ? "active" : "inactive",
+        status: "active",
         isClickable: item.isClickable !== false,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -170,29 +170,31 @@ export async function fetchMenuFront(): Promise<MenusResponse> {
         segment: null,
         children: Array.isArray(item.children)
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ? item.children.map((child: any, cidx: number) => {
-              let childLink = "#";
-              if (child.linkType === "page") {
-                const slug = child.pageSlug || "";
-                childLink = slug === "home" || slug === "/" ? "/" : `/${slug}`;
-              } else {
-                childLink = child.externalLink || "#";
-              }
-              return {
-                id: `menu-${idx}-${cidx}`,
-                menuName: child.menuName || "",
-                link: childLink,
-                parentPageId: `menu-${idx}`,
-                sortOrder: child.sortOrder ?? cidx,
-                status: child.status === 1 ? "active" : "inactive",
-                isClickable: child.isClickable !== false,
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString(),
-                parentPage: null,
-                segment: null,
-                children: [],
-              };
-            })
+          ? item.children
+              .filter((child: any) => child && child.status === 1)
+              .map((child: any, cidx: number) => {
+                let childLink = "#";
+                if (child.linkType === "page") {
+                  const slug = child.pageSlug || "";
+                  childLink = slug === "home" || slug === "/" ? "/" : slug ? `/${slug}` : "#";
+                } else {
+                  childLink = child.externalLink || "#";
+                }
+                return {
+                  id: `menu-${idx}-${cidx}`,
+                  menuName: child.menuName || "",
+                  link: childLink,
+                  parentPageId: `menu-${idx}`,
+                  sortOrder: child.sortOrder ?? cidx,
+                  status: "active",
+                  isClickable: child.isClickable !== false,
+                  createdAt: new Date().toISOString(),
+                  updatedAt: new Date().toISOString(),
+                  parentPage: null,
+                  segment: null,
+                  children: [],
+                };
+              })
           : [],
       };
     });
@@ -200,8 +202,70 @@ export async function fetchMenuFront(): Promise<MenusResponse> {
   return { success: true, status: 200, message: "Menu fetched", data: items };
 }
 
-export async function fetchMenuByName(): Promise<MenusResponse> {
-  return fetchMenuFront();
+export async function fetchMenuByName(menuTypeName: string): Promise<MenusResponse> {
+  const raw = await sanityFetch(NAVIGATION_MENU_QUERY, {
+    menuTypeName,
+  });
+
+  if (!raw || !Array.isArray(raw.items)) {
+    return { success: true, status: 200, message: "No menu", data: [] };
+  }
+
+  const items = raw.items
+    .filter((item: any) => item && item.status === 1)
+    .sort((a: any, b: any) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+    .map((item: any, idx: number) => {
+      let link = "#";
+      if (item.linkType === "page") {
+        const slug = item.pageSlug || "";
+        link = slug === "home" || slug === "/" ? "/" : slug ? `/${slug}` : "#";
+      } else {
+        link = item.externalLink || "#";
+      }
+
+      return {
+        id: `menu-${idx}`,
+        menuName: item.menuName || "",
+        link,
+        parentPageId: null,
+        sortOrder: item.sortOrder ?? idx,
+        status: "active",
+        isClickable: item.isClickable !== false,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        parentPage: null,
+        segment: null,
+        children: Array.isArray(item.children)
+          ? item.children
+              .filter((child: any) => child && child.status === 1)
+              .map((child: any, cidx: number) => {
+                let childLink = "#";
+                if (child.linkType === "page") {
+                  const slug = child.pageSlug || "";
+                  childLink = slug === "home" || slug === "/" ? "/" : slug ? `/${slug}` : "#";
+                } else {
+                  childLink = child.externalLink || "#";
+                }
+                return {
+                  id: `menu-${idx}-${cidx}`,
+                  menuName: child.menuName || "",
+                  link: childLink,
+                  parentPageId: `menu-${idx}`,
+                  sortOrder: child.sortOrder ?? cidx,
+                  status: "active",
+                  isClickable: child.isClickable !== false,
+                  createdAt: new Date().toISOString(),
+                  updatedAt: new Date().toISOString(),
+                  parentPage: null,
+                  segment: null,
+                  children: [],
+                };
+              })
+          : [],
+      };
+    });
+
+  return { success: true, status: 200, message: "Menu fetched", data: items };
 }
 
 export async function fetchPageBySlug(slug: string): Promise<PageBySlugResponse> {

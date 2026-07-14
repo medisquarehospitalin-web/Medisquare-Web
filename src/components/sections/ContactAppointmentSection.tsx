@@ -5,29 +5,29 @@ import { Phone, MapPin, Loader2, CheckCircle2, XCircle, Mail } from "lucide-reac
 import Reveal from "@/components/site/Reveal";
 
 interface LocationInfo {
-  title: string;
-  address: string;
-  mapUrl: string;
+  title?: string;
+  address?: string;
+  mapUrl?: string;
 }
 
 interface ContactInfo {
-  title: string;
-  phone: string;
-  email: string;
+  title?: string;
+  phone?: string;
+  email?: string;
 }
 
 interface AppointmentInfo {
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
 }
 
 interface ContactAppointmentData {
   badgeText: string;
   title: string;
   titleHighlight: string;
-  location: LocationInfo;
-  contact: ContactInfo;
-  appointment: AppointmentInfo;
+  location?: LocationInfo | null;
+  contact?: ContactInfo | null;
+  appointment?: AppointmentInfo | null;
 }
 
 interface ContactAppointmentSectionProps {
@@ -117,61 +117,74 @@ export default function ContactAppointmentSection({ data }: ContactAppointmentSe
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Column: Contact Cards & Map */}
-          <div className="lg:col-span-5 flex flex-col gap-8">
-            <Reveal>
-              <div className="flex flex-col gap-4">
-                
-                {/* Location Card */}
-                <div className="flex gap-4 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-orange-50 border border-orange-100 flex-shrink-0 text-primary">
-                    <MapPin className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-secondary text-base">{data.location.title}</h3>
-                    <p className="mt-1 text-sm font-semibold text-slate-500 leading-relaxed">{data.location.address}</p>
-                  </div>
+          {(data.location || data.contact) && (
+            <div className="lg:col-span-5 flex flex-col gap-8">
+              <Reveal>
+                <div className="flex flex-col gap-4">
+                  
+                  {/* Location Card */}
+                  {data.location && (
+                    <div className="flex gap-4 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                      <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-orange-50 border border-orange-100 flex-shrink-0 text-primary">
+                        <MapPin className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-secondary text-base">{data.location.title}</h3>
+                        <p className="mt-1 text-sm font-semibold text-slate-500 leading-relaxed">{data.location.address}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Contact Card */}
+                  {data.contact && (
+                    <div className="flex gap-4 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                      <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-orange-50 border border-orange-100 flex-shrink-0 text-primary">
+                        <Phone className="h-5 w-5" />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <h3 className="font-bold text-secondary text-base">{data.contact.title}</h3>
+                        {data.contact.phone && (
+                          <a href={`tel:${data.contact.phone}`} className="text-sm font-bold text-slate-600 hover:text-primary transition-colors">
+                            {data.contact.phone}
+                          </a>
+                        )}
+                        {data.contact.email && (
+                          <a href={`mailto:${data.contact.email}`} className="text-sm font-semibold text-slate-500 hover:text-primary transition-colors flex items-center gap-1.5 mt-0.5">
+                            <Mail className="h-3.5 w-3.5" />
+                            <span>{data.contact.email}</span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
                 </div>
+              </Reveal>
 
-                {/* Contact Card */}
-                <div className="flex gap-4 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-orange-50 border border-orange-100 flex-shrink-0 text-primary">
-                    <Phone className="h-5 w-5" />
+              {/* Map Box */}
+              {data.location?.mapUrl && (
+                <Reveal>
+                  <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
+                    <iframe
+                      src={data.location.mapUrl}
+                      title="Hospital Map Location"
+                      className="w-full h-full border-0 absolute inset-0"
+                      allowFullScreen
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <h3 className="font-bold text-secondary text-base">{data.contact.title}</h3>
-                    <a href={`tel:${data.contact.phone}`} className="text-sm font-bold text-slate-600 hover:text-primary transition-colors">
-                      {data.contact.phone}
-                    </a>
-                    <a href={`mailto:${data.contact.email}`} className="text-sm font-semibold text-slate-500 hover:text-primary transition-colors flex items-center gap-1.5 mt-0.5">
-                      <Mail className="h-3.5 w-3.5" />
-                      <span>{data.contact.email}</span>
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            </Reveal>
-
-            {/* Map Box */}
-            <Reveal>
-              <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
-                <iframe
-                  src={data.location.mapUrl}
-                  title="Hospital Map Location"
-                  className="w-full h-full border-0 absolute inset-0"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
-            </Reveal>
-          </div>
+                </Reveal>
+              )}
+            </div>
+          )}
 
           {/* Right Column: Appointment Form */}
-          <div className="lg:col-span-7 bg-white border border-slate-100 p-8 md:p-10 rounded-3xl shadow-sm">
-            <Reveal>
-              <div>
-                <h3 className="text-2xl font-extrabold text-secondary mb-2">{data.appointment.title}</h3>
-                <p className="text-sm font-semibold text-slate-500 leading-relaxed mb-8">{data.appointment.subtitle}</p>
+          {data.appointment && (
+            <div className="lg:col-span-7 bg-white border border-slate-100 p-8 md:p-10 rounded-3xl shadow-sm">
+              <Reveal>
+                <div>
+                  <h3 className="text-2xl font-extrabold text-secondary mb-2">{data.appointment.title}</h3>
+                  <p className="text-sm font-semibold text-slate-500 leading-relaxed mb-8">{data.appointment.subtitle}</p>
 
                 {/* Form Alerts */}
                 {formStatus.show && (
@@ -288,6 +301,7 @@ export default function ContactAppointmentSection({ data }: ContactAppointmentSe
               </div>
             </Reveal>
           </div>
+          )}
         </div>
 
       </div>

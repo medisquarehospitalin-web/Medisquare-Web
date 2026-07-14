@@ -40,20 +40,22 @@ export default function ClinicsGridSection({ data }: ClinicsGridProps) {
 
         {/* Grid Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.cards.map((card, idx) => (
+          {(data.cards || []).map((card, idx) => (
             <Reveal key={idx} delay={idx * 0.1}>
               <Link
-                href={card.link}
+                href={card.link || "#"}
                 className="card-interactive flex flex-col items-center text-center justify-start h-full p-8 md:p-10 group cursor-pointer hover:border-primary/30"
               >
                 {/* Icon Circle Container */}
                 <div className="relative h-16 w-16 mb-6 flex items-center justify-center rounded-lg bg-accent group-hover:bg-primary border border-transparent transition-all duration-300 shadow-sm mx-auto">
-                  <Image
-                    src={getImageUrl(card.icon)}
-                    alt={card.title}
-                    fill
-                    className="object-contain p-3.5 brightness-0 invert transition-all duration-300"
-                  />
+                  {card.icon && (
+                    <Image
+                      src={getImageUrl(card.icon)}
+                      alt={card.title}
+                      fill
+                      className="object-contain p-3.5 brightness-0 invert transition-all duration-300"
+                    />
+                  )}
                 </div>
 
                 <h3 className="text-xl font-bold text-secondary mb-4 group-hover:text-primary transition-colors leading-snug">

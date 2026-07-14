@@ -9,8 +9,8 @@ import { getImageUrl } from "@/lib/utils";
 interface Activity {
   id: string;
   title: string;
-  thumbnail: string;
-  slides: string[];
+  thumbnail?: { fileUrl: string; altText?: string } | null;
+  slides?: ({ fileUrl: string; altText?: string } | null)[] | null;
 }
 
 interface Video {
@@ -48,19 +48,19 @@ export default function HealthAwarenessSection({ data }: HealthAwarenessProps) {
 
   const handleNextSlide = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (!selectedActivity) return;
+    if (!selectedActivity || !selectedActivity.slides) return;
     setActiveSlideIndex(
-      (prev) => (prev + 1) % selectedActivity.slides.length
+      (prev) => (prev + 1) % selectedActivity.slides!.length
     );
   };
 
   const handlePrevSlide = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (!selectedActivity) return;
+    if (!selectedActivity || !selectedActivity.slides) return;
     setActiveSlideIndex(
       (prev) =>
-        (prev - 1 + selectedActivity.slides.length) %
-        selectedActivity.slides.length
+        (prev - 1 + selectedActivity.slides!.length) %
+        selectedActivity.slides!.length
     );
   };
 
@@ -82,16 +82,18 @@ export default function HealthAwarenessSection({ data }: HealthAwarenessProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.activities.map((activity, idx) => (
+          {(data.activities || []).map((activity, idx) => (
             <Reveal key={activity.id} delay={idx * 0.1}>
               <div className="card-interactive overflow-hidden flex flex-col h-full hover:border-primary/20 group">
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-100 border-b border-slate-100">
-                  <Image
-                    src={getImageUrl(activity.thumbnail)}
-                    alt={activity.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  {activity.thumbnail?.fileUrl && (
+                    <Image
+                      src={getImageUrl(activity.thumbnail.fileUrl)}
+                      alt={activity.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent opacity-60" />
                 </div>
                 <div className="p-8 flex flex-col flex-grow justify-between gap-6">
@@ -128,7 +130,7 @@ export default function HealthAwarenessSection({ data }: HealthAwarenessProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.videos.map((video, idx) => (
+          {(data.videos || []).map((video, idx) => (
             <Reveal key={idx} delay={idx * 0.1}>
               <div className="card-interactive overflow-hidden p-4 md:p-5 flex flex-col gap-5 bg-slate-50/50 hover:bg-white hover:border-primary/20 transition-all duration-300">
                 <div className="video-container rounded-2xl overflow-hidden shadow-inner border border-slate-100">
@@ -177,17 +179,19 @@ export default function HealthAwarenessSection({ data }: HealthAwarenessProps) {
             {/* Modal Body - Image Slider */}
             <div className="relative flex-grow flex items-center justify-center p-4 md:p-8 bg-slate-950 aspect-video md:aspect-[21/9]">
               <div className="relative w-full h-full">
-                <Image
-                  src={getImageUrl(selectedActivity.slides[activeSlideIndex])}
-                  alt={`${selectedActivity.title} - Slide ${activeSlideIndex + 1}`}
-                  fill
-                  priority
-                  className="object-contain"
-                />
+                {selectedActivity.slides && selectedActivity.slides[activeSlideIndex]?.fileUrl && (
+                  <Image
+                    src={getImageUrl(selectedActivity.slides[activeSlideIndex]!.fileUrl)}
+                    alt={`${selectedActivity.title} - Slide ${activeSlideIndex + 1}`}
+                    fill
+                    priority
+                    className="object-contain"
+                  />
+                )}
               </div>
 
               {/* Slider Controls */}
-              {selectedActivity.slides.length > 1 && (
+              {selectedActivity.slides && selectedActivity.slides.length > 1 && (
                 <>
                   <button
                     onClick={handlePrevSlide}
@@ -208,7 +212,7 @@ export default function HealthAwarenessSection({ data }: HealthAwarenessProps) {
             </div>
 
             {/* Modal Footer - Indicators */}
-            {selectedActivity.slides.length > 1 && (
+            {selectedActivity.slides && selectedActivity.slides.length > 1 && (
               <div className="p-4 bg-slate-50/50 border-t border-slate-100 flex items-center justify-center gap-2">
                 {selectedActivity.slides.map((_, idx) => (
                   <button
