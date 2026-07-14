@@ -1,0 +1,141 @@
+{
+  "slug": "awareness",
+  "title": "Health Awareness",
+  "metaTitle": "Health Awareness - MediSquare Hospital",
+  "metaDescription": "MediSquare's health awareness activities, talks, screening camps, and cancer awareness videos by experts in Ahmedabad.",
+  "pageType": "awareness",
+  "sections": [
+    {
+      "id": "sec-awareness-hero",
+      "sectionType": "hero",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Health Awareness",
+        "breadcrumbText": "HOME > HEALTH AWARENESS",
+        "backgroundImage": "/assets/img/carou_lobby.jpg"
+      }
+    },
+    {
+      "id": "sec-awareness-activities",
+      "sectionType": "health_awareness",
+      "sortOrder": 2,
+      "sectionData": {
+        "badgeText": "ACTIVITIES",
+        "title": "Health Awareness",
+        "titleHighlight": "Activities",
+        "activities": [
+          {
+            "id": "unjha",
+            "title": "Breast and Cervix Cancer Awareness Among Women at Unjha",
+            "thumbnail": "/assets/img/p1.jpg",
+            "slides": [
+              "/assets/img/act_unjha (1).jpg",
+              "/assets/img/act_unjha (3).jpg",
+              "/assets/img/act_unjha (4).jpg",
+              "/assets/img/act_unjha (5).jpg",
+              "/assets/img/act_unjha (6).jpg",
+              "/assets/img/act_unjha (2).jpg",
+              "/assets/img/act_unjha (7).jpg"
+            ]
+          },
+          {
+            "id": "morbi",
+            "title": "Cancer Awareness Among Senior Citizens at Morbi",
+            "thumbnail": "/assets/img/p4.png",
+            "slides": [
+              "/assets/img/act_morbi (1).png",
+              "/assets/img/act_morbi (2).png",
+              "/assets/img/act_morbi (3).png",
+              "/assets/img/act_morbi (4).png"
+            ]
+          },
+          {
+            "id": "gondal",
+            "title": "Free Cancer Screening Camp at Gondal",
+            "thumbnail": "/assets/img/p5 2.jpg",
+            "slides": [
+              "/assets/img/act_gondal (1).jpg",
+              "/assets/img/act_gondal (2).jpg",
+              "/assets/img/act_gondal (3).jpg",
+              "/assets/img/act_gondal (4).jpg",
+              "/assets/img/act_gondal (5).jpg",
+              "/assets/img/act_gondal (7).jpg"
+            ]
+          },
+          {
+            "id": "womensclub",
+            "title": "Health Talk on Breast Cancer Awareness at Wama Women's Club",
+            "thumbnail": "/assets/img/p3.jpg",
+            "slides": [
+              "/assets/img/act_womensclub (1).jpg",
+              "/assets/img/act_womensclub (2).jpg",
+              "/assets/img/act_womensclub (3).jpg"
+            ]
+          },
+          {
+            "id": "naroda",
+            "title": "Health Talk on Cancer Awareness at Naroda",
+            "thumbnail": "/assets/img/p1 - 2.jpg",
+            "slides": [
+              "/assets/img/act_naroda (1).jpg",
+              "/assets/img/act_naroda (2).jpg",
+              "/assets/img/act_naroda (3).jpg",
+              "/assets/img/act_naroda (4).jpg",
+              "/assets/img/act_naroda (5).jpg",
+              "/assets/img/act_naroda (6).jpg",
+              "/assets/img/act_naroda (7).jpg"
+            ]
+          },
+          {
+            "id": "corporate",
+            "title": "Health Talk on Cancer Screening Among Corporate Women",
+            "thumbnail": "/assets/img/p1 - 3.jpg",
+            "slides": [
+              "/assets/img/act_corpo (1).jpg",
+              "/assets/img/act_corpo (2).jpg",
+              "/assets/img/act_corpo (3).jpg",
+              "/assets/img/act_corpo (4).jpg"
+            ]
+          },
+          {
+            "id": "advances",
+            "title": "Newer Advances in Breast Cancer Treatment- A Talk Among Doctors IMA at Gondal",
+            "thumbnail": "/assets/img/P2.jpg",
+            "slides": [
+              "/assets/img/act_advances (1).jpg",
+              "/assets/img/act_advances (2).jpg",
+              "/assets/img/act_advances (3).jpg",
+              "/assets/img/act_advances (4).jpg"
+            ]
+          },
+          {
+            "id": "cancers",
+            "title": "Super Speciality Scientific Symposium with Dental Surgeons on Oral Cavity Cancers",
+            "thumbnail": "/assets/img/p1 - 4.jpg",
+            "slides": [
+              "/assets/img/act_cancers (1).jpg",
+              "/assets/img/act_cancers (2).jpg"
+            ]
+          }
+        ],
+        "videoBadgeText": "VIDEOS",
+        "videoTitle": "Health Awareness",
+        "videoTitleHighlight": "Videos",
+        "videos": [
+          {
+            "title": "Lung Cancer Awareness",
+            "embedUrl": "https://www.youtube.com/embed/ofWTWob2OT0"
+          },
+          {
+            "title": "Cancer Screening - Breast and Cervix Cancer Awareness",
+            "embedUrl": "https://www.youtube.com/embed/nBYLz47asqk"
+          },
+          {
+            "title": "Cancer Vaccines - Human Papilloma Virus (HPV) Vaccine",
+            "embedUrl": "https://www.youtube.com/embed/vGuaOC2NVyI"
+          }
+        ]
+      }
+    }
+  ]
+}

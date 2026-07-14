@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc; /* Slate 50 background */
+  --foreground: #334155; /* Slate 700 main body text */
+
+  /* MediSquare theme colors */
+  --primary: #e95420; /* Vibrant Orange/Rust from WordPress */
+  --primary-dark: #b83d14; /* Darker orange for hover effects */
+  --primary-light: #fef2f2; /* Light tinted red-orange for card backdrops */
+  --secondary: #0f172a; /* Deep Slate Navy for headings */
+  --secondary-light: #1e293b; /* Medium slate */
+  --accent: #1d75bd; /* Medical Blue from WordPress */
+  --accent-dark: #12578d;
+  --accent-light: #eff6ff;
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+  --muted: #64748b; /* Slate 500 */
+  --border: #e2e8f0; /* Slate 200 */
+  --ring: rgba(233, 84, 32, 0.2);
+
+  /* Typography */
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Montserrat", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-light: var(--accent-light);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--secondary);
+}
+
+/* Glassmorphism Header */
+.glass-header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Premium Card Transitions */
+.card-interactive {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem; /* 12px */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-interactive:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  border-color: rgba(233, 84, 32, 0.2);
+}
+
+/* Responsive video wrapper */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  border-radius: 1rem;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Beautiful custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Pulse animation for CTA buttons */
+@keyframes soft-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(233, 84, 32, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(233, 84, 32, 0);
+  }
+}
+
+.pulse-primary {
+  animation: soft-pulse 2s infinite;
+}
+
+/* Entrance Animations */
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

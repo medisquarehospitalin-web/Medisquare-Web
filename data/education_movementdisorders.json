@@ -1,0 +1,148 @@
+{
+  "slug": "education_movementdisorders",
+  "title": "Patient Education - Movement Disorders",
+  "metaTitle": "Patient Education - Movement Disorders - MediSquare Hospital",
+  "metaDescription": "Patient resources for neurological movement disorders including Ataxia, Tremors, Dystonia, Parkinson's disease, and Wilson's disease.",
+  "pageType": "education",
+  "sections": [
+    {
+      "id": "sec-education-movement-hero",
+      "sectionType": "hero",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Neurology Patient Education",
+        "breadcrumbText": "HOME > PATIENT EDUCATION > NEUROLOGY",
+        "backgroundImage": "/assets/img/carou_lobby.jpg"
+      }
+    },
+    {
+      "id": "sec-edu-movement-articles",
+      "sectionType": "patient_education_articles",
+      "sortOrder": 2,
+      "sectionData": {
+        "badgeText": "ARTICLES",
+        "title": "Movement Disorder",
+        "titleHighlight": "Articles",
+        "cards": [
+          {
+            "id": "ataxia",
+            "title": "Ataxia",
+            "image": "/assets/img/movement_edu_ataxia.png",
+            "modalContent": {
+              "title": "Ataxia",
+              "body": "<strong>What is ataxia?</strong><br><br>The word Ataxia comes from the Greek and means “without order.” Ataxias are a group of disorders that affect balance, coordination, and speech. Common symptoms include imbalance while walking, falls, change in speech, tremors, and difficulty with fine motor activities. Diseases of the brain (cerebellum), vision, inner ear, and peripheral nerves can cause unsteadiness and balance problems. Your doctor will examine you to determine if ataxia is caused by dysfunction of the brain, spinal cord, or nerves. The most common area of the brain responsible for ataxia is the cerebellum.<br><br><strong>What are the common causes of ataxia?</strong><br><br>• Acquired: Brain stroke, tumour, head trauma, infection<br>• Metabolic: Excessive alcohol intake, vitamin deficiencies (B1, B12 and E), thyroid gland dysfunction, low blood sugar levels<br>• Drugs and toxins: Exposure to certain drugs or toxins such as phenytoin, carbamazepine, barbiturates, sedative drugs, certain antibiotics, lithium, amiodarone<br>• Autoimmune disorders: Multiple sclerosis, Coeliac disease, Anti-GAD antibody related disease, an immune response against a tumour, brain blood vessel inflammation<br>• Genetic: Spinocerebellar ataxias, Friedreich’s ataxia as well as other genetic ataxias<br>• Sporadic: Multiple system atrophy<br><br><strong>What are the symptoms of patients with ataxia?</strong><br><br>• Difficulty with balance while standing<br>• Difficulties with walking which may include:<br>  - Walking with your feet spread wide apart<br>  - Swaying or falling to one side or the other<br>  - Inability to walk in a straight line<br>• Uncoordinated, clumsy hand movements<br>• Shaking (tremor) that usually gets worse when reaching for a target. It can affect arms, legs, head or even the whole body<br>• Slurred speech<br>• Problems with eye movements that can cause double or blurred vision<br>• Dizziness<br><br><strong>How is ataxia diagnosed?</strong><br><br>Ataxia is usually diagnosed clinically by your doctor upon taking history (including family history), and examining the patient physiologically. If necessary, your doctor may order certain diagnostic tests including:<br><br>• Imaging studies: a brain scan using computerized tomography (CT) or magnetic resonance imaging (MRI) and/or a spine MRI<br>• Tests for blood, urine and spinal fluid samples<br>• Tests on blood pressure and urinary function<br>• Cardiac evaluation<br>• Nerve conduction studies and electromyography (NCS/EMG)<br>• Cognitive or neuropsychological evaluation<br>• Eye evaluation<br>• Blood tests for genetic/hereditary ataxias<br><br><strong>What are treatment options available for ataxia?</strong><br><br>Treatment of ataxia or balance problem depends upon its cause. Many conditions causing ataxia or balance problem are treatable provided a diagnosis is made early in the disease. Treatment may be possible for certain vitamin deficiency, tumour, autoimmune and metabolic disease. Some genetic ataxias may have a specific vitamin or drug treatment. If the ataxia is due to drugs or toxins, stopping the exposure to that agent may improve the ataxia.<br><br>For those conditions where a specific treatment doesn't exist, oral medications can be tried to improve the symptoms of ataxia. Non-pharmacological therapies like the centre of pressure biofeedback, targeted physiotherapy for balance, speech therapy and non-invasive brain stimulation (transcranial direct current stimulation) have shown to improve balance in patients with ataxia."
+            }
+          },
+          {
+            "id": "botulinum",
+            "title": "Botulinum Toxin",
+            "image": null,
+            "modalContent": {
+              "title": "Botulinum Toxin",
+              "body": "<strong>What Is Botulinum Toxin?</strong><br><br>Botulinum NeuroToxin (BoNT) is a naturally occurring protein made by the bacterium clostridium botulinum. When BoNT contaminates food, it can cause botulism: a severe and potentially deadly illness. In the last 40 years, however, researchers have transformed this poison into an effective and safe drug to treat many medical conditions, when used at the correct dosages.<br><br><strong>How does it work?</strong><br><br>During treatment, BoNT must be injected into a muscle or gland. Nerve endings take up the BoNT and it blocks the connection between the nerve and muscle or the nerve and gland. This causes the muscle to weaken or the gland to reduce saliva or sweating.<br>Patients currently have two types of BoNT treatments available: Types A and B. Depending on what country you live in, there may be a different option available:<br><br>• Type A: onabotulinumtoxinA, abobotulinumtoxinA, incobotulinumtoxinA<br>• Type B: rimabotulinumtoxinB<br><br>The BoNT treatments may have different strengths and ability to spread in the tissue after injection. They generally work the same way and have the same effect on the muscle or gland. However, the drugs are not completely interchangeable. The doses differ for each drug, so doctors need to use the correct dosage for that toxin.<br>After an injection, it takes two to seven days to start to work. The drug reaches a full effect after about two to three weeks and then gradually wears off. BoNT injections need to be repeated approximately every three to six months due to its temporary effect. Injections are given no more than every 3 months to prevent the body from rejecting the treatment and forming antibody against BoNT.<br><br><strong>What diseases can be treated with Botulinum Toxin?</strong><br><br>Ophthalmologists first used BoNT as an alternative to surgery for treating eye misalignment known as strabismus. Neurologists then started using BoNT for patients with abnormal excessive muscle contractions from movement disorders, such as dystonia. For many conditions, there were no other treatments available. BoNT is effective for treating:<br><br>• Dystonia: Involuntary muscle spasms or contractions that cause twisting, jerking movements or unusual body positions:<br>  - Cervical dystonia, where abnormal neck muscle contractions cause head turning, tilting or twisting<br>  - Excessive blinking or eye spasms (blepharospasm)<br>  - Abnormal jaw, tongue and lower facial movements (oromandibular dystonia)<br>  - Vocal cord spasms (laryngeal dystonia or spasmodic dysphonia)<br>  - Hand or arm dystonia, such as writer’s cramp<br>• Hemifacial spasm: Muscle twitching around one eye or one side of the face.<br>• Spasticity: This condition causes muscle spasms and increased muscle tone in: cerebral palsy, after a stroke, spinal cord injury or with multiple sclerosis.<br>• Excessive sweating or hyperhidrosis: It affects the palms or armpits and may improve with injections into the skin.<br>• Other conditions: May improve after BoNT injections:<br>  - Head, hands or voice tremors<br>  - Tics<br>  - Increased drooling (sialorrhea) in patients with Parkinson’s disease or amyotrophic lateral sclerosis<br>  - Chronic migraine headaches<br>  - Overactive bladder<br><br><strong>Is it safe? What are the side effects of BoNT?</strong><br><br>Even though BoNT is a toxin, proper doses given in the correct locations are safe and effective. The most common side effect is weakness of the injected muscle. For example, eyelid drooping or double vision when injected around the eye. Other side effects may include pain, bruising or bleeding at the injection site. Very rarely, BoNT injections can cause generalized weakness or flu-like symptoms if given in very high dosage in multiple muscles of body. BoNT injections must be given by experienced, trained doctors with the guidance of electromyography (EMG) or ultrasonography (USG) when necessary.<br><br><strong>What should one expect with BoNT treatment?</strong><br><br>BoNT is a very effective drug, and a 50-90% improvement can be expected for at least 2 to 3 months. If the injections are not effective then one of the following may be considered: changing (increasing) the dose or the injection site."
+            }
+          },
+          {
+            "id": "cortico",
+            "title": "Corticobasal Degeneration",
+            "image": "/assets/img/movement_edu_corticobasal.png",
+            "modalContent": {
+              "title": "Corticobasal Degeneration",
+              "body": "<strong>What is Corticobasal Degeneration?</strong><br><br>It is another type of atypical parkinsonism/Parkinson plus syndrome. It is a rare, progressive neurodegenerative disease, which was first identified in 1968. CBD is a complex disease with a wide variety of symptoms and signs. The disease typically starts between ages 60 and 70.<br><br><strong>What are the common causes of Corticobasal Degeneration?</strong><br><br>The exact cause of CBD is not known. CBD causes an abnormal brain ageing process that progresses over time. Healthy people have a protein called tau in their brains, which is important for normal neuron function. But patients with CBD have an abnormal tau protein that accumulates in the brain, and damages nerve cells and other brain cells in certain areas. Researchers do not know why this tau protein is abnormal in CBD. CBD is not hereditary. It has not been linked to any environmental exposures.<br><br><strong>What are the symptoms of Corticobasal Degeneration?</strong><br><br>Symptoms of CBD usually starts on one side of the body. These are:<br><br>• Slowness of movement and stiffness of one side of arm, leg, and neck<br>• Jerking of an arm or leg (Myoclonus)<br>• Abnormal posturing/twisting of the same arm and/or leg<br>• Balance and walking difficulty leading to recurrent falls<br>• Difficulty in performing previously learned skilful activities with the hand<br>• Sensation loss on one side or trouble identifying things by touch<br>• A feeling that your hand has a mind of its own, sometimes called ”alien limb” or abnormal flinging movements of arm while walking (“arm levitation”)<br>• Difficulties with speech and language, such as trouble finding the right words<br>• Behavioural changes such as loss of motivation, personality changes, or irritability<br>• Memory decline<br><br><strong>What are the types of CBD?</strong><br><br>Several types of CBD have been identified according to the main clinical symptoms. CBD symptoms can overlap with other more common neurological diseases. That is why neurologists often use the term Corticobasal syndrome rather than CBD.<br><br><strong>How is CBD diagnosed?</strong><br><br>The diagnosis is based on medical history and neurological examination. Because signs and symptoms of CBD may be similar to other diseases, such as Parkinson’s disease, it can be difficult to diagnose in the early stages. Scans like magnetic resonance imaging (MRI) of brain are often useful. Imaging may rule out other diseases that may mimic CBD and find specific patterns of brain shrinkage, called atrophy. There are no blood tests which can diagnose the disease.<br><br><strong>What is the treatment of CBD?</strong><br><br>There are no treatment options found till date which can cure, slow down, or halt the progression of disease. However, some symptoms can sometimes be treated with medications such as:<br><br>• Levodopa and other dopaminergic agents to improve slowness, stiffness, and tremors<br>• Medications to manage the myoclonic jerks<br>• Botulinum toxin injections to decrease arm or leg stiffness or improve abnormal posturing of arm/leg<br>• Other targeted medications for urinary problems, anxiety, depression, cognitive problems etc.<br>• Physiotherapy, occupational therapy and/or speech therapy to help maintain activities of daily living."
+            }
+          },
+          {
+            "id": "dystonia",
+            "title": "Dystonia",
+            "image": "/assets/img/movement_edu_dystonia.png",
+            "modalContent": {
+              "title": "Dystonia",
+              "body": "<strong>What is dystonia?</strong><br><br>Dystonia is a movement disorder in which there is sustained or intermittent uncontrollable muscle contractions that result in either repetitive twisting movements or abnormal postures or both. These dystonic movements can be associated with tremors. Dystonia can affect one muscle, a group of muscles or entire body.<br><br><strong>How is dystonia classified?</strong><br><br>Dystonia is mainly classified based on body parts it affects:<br><br>• Focal dystonia - It is localized to one part of body.<br>• Segmental dystonia - It involves two or more contiguous body parts.<br>• Multifocal dystonia - It involves two or more non-contiguous body parts.<br>• Generalised dystonia - When it involves almost all body parts including trunk.<br>• Hemidystonia - When it involves one side of arm and leg.<br><br><strong>What are the causes of dystonia?</strong><br><br>Majority of cases of dystonia do not have a specific cause which are called idiopathic dystonia. It is believed to originate from dysfunction of or damage to basal ganglia (a part of brain) and its circuitry which control the body movements.<br>Idiopathic dystonia can be of sporadic origin or genetic origin. Some forms of genetic dystonia are inherited in autosomal dominant fashion. While others are inherited in autosomal recessive fashion. The symptoms may vary widely in severity among the different members of same family.<br>Apart from this, secondary dystonia result from environmental or other insults to the brain, including:<br><br>• Brain stroke, brain trauma, or tumor<br>• Infection or demyelination<br>• Hypoxic brain damage or cerebral palsy<br>• Drugs and toxins (lead, carbon monoxide, manganese)<br><br><strong>What are different types of dystonia?</strong><br><br>• Blepharospasm: A focal dystonia that affects both eyes, starting with frequent blinking and leading to forceful closure of eyelids.<br>• Cervical dystonia: Affects the neck muscles causing the head to twist, tilt or pull. Can be associated with neck pain and tremors.<br>• Task specific dystonia: Occurs during a specific repetitive activity (e.g. Writer's cramp, Musician's dystonia, typist's cramp).<br>• Cranial dystonia: Affects head, oro-facial region, jaw (oromandibular dystonia), tongue, and vocal cords (Spasmodic dysphonia).<br><br><strong>What are the treatment options for dystonia?</strong><br><br>• Medical treatment: Trihexyphenidyl, baclofen, clonazepam, and tetrabenazine are used to treat generalized or multifocal dystonia.<br>• Botulinum toxin injection: The most effective treatment for focal and segmental dystonia. Repeated every 3-4 months.<br>• Deep brain stimulation (DBS): Recommended for refractory segmental, cervical, and generalized dystonia, targeting the Globus Pallidus interna (GPi)."
+            }
+          },
+          {
+            "id": "tremors",
+            "title": "Essential Tremors",
+            "image": "/assets/img/movement_edu_tremors.png",
+            "modalContent": {
+              "title": "Essential Tremors (ET)",
+              "body": "<strong>What is essential tremor (ET)?</strong><br><br>It is probably the most common movement disorder seen in clinical practice. It commonly presents with tremulousness of both hands while keeping the hands outstretched and performing fine activities such as holding a cup, writing, or eating. Tremors can also affect head, jaw, tongue, or voice. Stress, anxiety, and physical exertion temporarily aggravate tremors. About 40-50% of cases are familial. It is often confused with Parkinson's disease, but in PD, tremors are prominent at rest and are associated with stiffness, slowness, and balance issues.<br><br><strong>What is the cause of ET?</strong><br><br>The exact cause is unknown. Researchers believe it involves degeneration of cerebellar pathways that control body movement.<br><br><strong>How can essential tremor be diagnosed?</strong><br><br>Diagnosis is mainly clinical. Blood tests and MRI help rule out metabolic issues, drugs, or structural abnormalities.<br><br><strong>What is the treatment for essential tremor?</strong><br><br>• Oral medications: Propranolol (beta blocker) and primidone are first line. Topiramate or clonazepam are also used.<br>• Botulinum toxin: Useful for hand/head tremors when medications fail.<br>• Deep brain stimulation (DBS): Targets the Ventral Intermediate Nucleus (Vim) of the thalamus for severe, drug-refractory tremors."
+            }
+          },
+          {
+            "id": "hereditaryataxias",
+            "title": "Hereditary Ataxias",
+            "image": null,
+            "modalContent": {
+              "title": "Hereditary Ataxias",
+              "body": "<strong>What is hereditary ataxia (HA)?</strong><br><br>Hereditary ataxias are progressive genetic diseases affecting the cerebellum, causing loss of balance, uncoordinated movements, and speech issues. Other signs include parkinsonism, neuropathy, or heart problems.<br><br><strong>How is it Inherited?</strong><br><br>• Autosomal dominant: Spinocerebellar ataxias (SCAs), episodic ataxias.<br>• Autosomal recessive: Friedreich's ataxia, ataxia telangiectasia.<br>• X-linked and Mitochondrial ataxias.<br><br><strong>How is HA diagnosed and treated?</strong><br><br>Diagnosis is confirmed by genetic testing. Treatment is symptomatic, focusing on physical, speech, and occupational therapies to improve quality of life."
+            }
+          },
+          {
+            "id": "huntington",
+            "title": "Huntington’s Disease",
+            "image": "/assets/img/movement_edu_huntington.png",
+            "modalContent": {
+              "title": "Huntington’s Disease",
+              "body": "<strong>What is Huntington’s disease?</strong><br><br>Huntington's disease (HD) is an inherited progressive neurodegenerative disease affecting movement, behavior, thinking, and memory. Onset is usually between 30 and 50 years.<br><br><strong>What are the symptoms?</strong><br><br>The hallmark symptom is chorea (involuntary dance-like movements). Patients also experience depression, cognitive decline, swallowing difficulties, and eventual loss of independence.<br><br><strong>Diagnosis & Treatment:</strong><br><br>Confirmed via genetic testing showing CAG repeat expansion in the HTT gene. There is no cure; treatment focuses on managing chorea and psychiatric symptoms."
+            }
+          },
+          {
+            "id": "msa",
+            "title": "Multiple System Atrophy",
+            "image": "/assets/img/movement_edu_msa.png",
+            "modalContent": {
+              "title": "Multiple System Atrophy (MSA)",
+              "body": "<strong>What is MSA?</strong><br><br>Multiple system atrophy (MSA) is a progressive neurodegenerative disorder characterized by a combination of autonomic failure (blood pressure drops, bladder dysfunction), parkinsonism (rigidity, slowness), and cerebellar ataxia.<br><br><strong>Diagnosis and Management:</strong><br><br>Diagnosed clinically; brain MRI shows a 'hot cross bun' sign in the pons. Treatment targets symptoms (e.g. midodrine for low BP, levodopa for rigidity, physical therapy)."
+            }
+          },
+          {
+            "id": "parkinson",
+            "title": "Parkinson’s Disease",
+            "image": "/assets/img/movement_edu_parkinson.png",
+            "modalContent": {
+              "title": "Parkinson’s Disease",
+              "body": "<strong>What is Parkinson’s disease?</strong><br><br>Parkinson's disease (PD) is a slowly progressive brain disorder caused by the loss of dopamine-producing cells in the substantia nigra. Symptoms include tremors (at rest), stiffness (rigidity), slowness of movement (bradykinesia), and walking difficulties.<br><br><strong>Motor & Non-Motor Symptoms:</strong><br><br>• Motor: Tremor, stiffness, bradykinesia, balance impairment.<br>• Non-Motor: Loss of smell, constipation, sleep problems (RBD), depression, memory changes.<br><br><strong>Management:</strong><br><br>Levodopa-carbidopa is the gold standard. Advanced stages may benefit from Deep Brain Stimulation (DBS) to address motor fluctuations ('ON-OFF' periods)."
+            }
+          },
+          {
+            "id": "supranuclear",
+            "title": "Progressive Supranuclear Palsy",
+            "image": "/assets/img/movement_edu_supranuclear.png",
+            "modalContent": {
+              "title": "Progressive Supranuclear Palsy (PSP)",
+              "body": "<strong>What is PSP?</strong><br><br>PSP is an atypical parkinsonian syndrome causing early balance problems with falls (typically backwards), vertical eye movement limitations (trouble looking down), voice changes, and cognitive decline.<br><br><strong>Management:</strong><br><br>Levodopa gives limited benefit. Treatment is supportive, including specialized glasses, speech therapy, and assistive walking devices."
+            }
+          },
+          {
+            "id": "restlessleg",
+            "title": "Restless Legs Syndrome",
+            "image": null,
+            "modalContent": {
+              "title": "Restless Legs Syndrome (RLS)",
+              "body": "<strong>What is RLS?</strong><br><br>RLS is a neurological condition causing an irresistible urge to move the legs, accompanied by uncomfortable creeping, crawling, or burning sensations. Symptoms worsen in the evening and during rest.<br><br><strong>Causes & Treatment:</strong><br><br>Primary RLS is genetic. Secondary causes include iron deficiency, kidney failure, or pregnancy. Treatment includes iron supplements, dopamine agonists (pramipexole), or alpha-2-delta ligands (gabapentin)."
+            }
+          },
+          {
+            "id": "ticsandtourette",
+            "title": "Tics and Tourette Syndrome",
+            "image": "/assets/img/movement_edu_tics.png",
+            "modalContent": {
+              "title": "Tics and Tourette Syndrome",
+              "body": "<strong>What are Tics and Tourette Syndrome?</strong><br><br>Tics are sudden, repetitive, involuntary motor movements or vocalizations. Tourette syndrome is diagnosed when a patient has multiple motor tics and at least one vocal tic for more than a year, starting before age 18.<br><br><strong>Treatment:</strong><br><br>Includes behavioral therapies (CBIT) and medications (clonidine, antipsychotics). Tics often improve or resolve in late adolescence."
+            }
+          },
+          {
+            "id": "wilsons",
+            "title": "Wilson’s Disease",
+            "image": null,
+            "modalContent": {
+              "title": "Wilson’s Disease",
+              "body": "<strong>What is Wilson’s disease?</strong><br><br>Wilson's disease is an inherited disorder causing excessive accumulation of copper in the liver, brain, and eyes. It is autosomal recessive and treatable if detected early.<br><br><strong>Symptoms & Diagnosis:</strong><br><br>Presents with tremors, dystonia, speech difficulty, psychiatric changes, or liver failure. Diagnosed by low blood ceruloplasmin, Kayser-Fleischer rings on slit-lamp eye exam, and elevated 24-hour urine copper.<br><br><strong>Treatment:</strong><br><br>Requires lifelong copper chelation therapy (penicillamine, trientine) or zinc acetate to block copper absorption, along with avoiding copper-rich foods."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
