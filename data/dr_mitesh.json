@@ -6,9 +6,19 @@
   "pageType": "doctor",
   "sections": [
     {
+      "id": "sec-dr-mitesh-hero",
+      "sectionType": "hero",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Dr. Mitesh Chandarana",
+        "breadcrumbText": "HOME > DOCTORS > DR. MITESH CHANDARANA",
+        "backgroundImage": "/assets/img/carou_lobby.jpg"
+      }
+    },
+    {
       "id": "sec-dr-mitesh-profile",
       "sectionType": "doctor_profile",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "sectionData": {
         "name": "DR. MITESH CHANDARANA",
         "specialty": "Neurology",

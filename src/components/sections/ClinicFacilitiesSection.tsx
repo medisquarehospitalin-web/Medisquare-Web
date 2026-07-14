@@ -113,7 +113,7 @@ export default function ClinicFacilitiesSection({ data }: ClinicFacilitiesSectio
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 md:p-8 overflow-y-auto text-sm md:text-base text-slate-600 leading-relaxed font-semibold">
+            <div className="p-6 md:p-8 overflow-y-auto text-sm md:text-base text-slate-600 leading-relaxed font-medium">
               <div
                 className="text-justify flex flex-col gap-4 whitespace-pre-line"
                 dangerouslySetInnerHTML={{ __html: selectedCard.modalContent.body }}

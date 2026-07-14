@@ -6,9 +6,19 @@
   "pageType": "clinic",
   "sections": [
     {
+      "id": "sec-movement-hero",
+      "sectionType": "hero",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Movement Disorders",
+        "breadcrumbText": "HOME > CLINICS > MOVEMENT DISORDERS",
+        "backgroundImage": "/assets/img/carou_lobby.jpg"
+      }
+    },
+    {
       "id": "sec-movement-highlights",
       "sectionType": "clinic_highlights",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "sectionData": {
         "badgeText": "HIGHLIGHTS",
         "title": "Movement Disorders Clinic",
@@ -44,7 +54,7 @@
     {
       "id": "sec-movement-facilities",
       "sectionType": "clinic_facilities",
-      "sortOrder": 2,
+      "sortOrder": 3,
       "sectionData": {
         "badgeText": "FACILITIES",
         "title": "Movement Disorders Clinic",
@@ -71,7 +81,7 @@
     {
       "id": "sec-movement-treatment",
       "sectionType": "conditions_list",
-      "sortOrder": 3,
+      "sortOrder": 4,
       "sectionData": {
         "badgeText": "TREATMENT",
         "title": "Conditions We",

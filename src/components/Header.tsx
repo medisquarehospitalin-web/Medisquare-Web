@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, Menu, X, Phone } from "lucide-react";
+import { ChevronDown, Menu, X, Phone, MapPin, Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -55,25 +55,61 @@ export default function Header({ menu }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+      className={`sticky top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? "glass-header shadow-md h-20"
-          : "bg-white/90 backdrop-blur-sm border-b border-slate-100 h-24"
+          ? "glass-header shadow-sm"
+          : "bg-white border-b border-slate-100"
       }`}
     >
-      <div className="container mx-auto h-full max-w-7xl flex items-center justify-between px-6 lg:px-8">
+      {/* Top Contact Bar */}
+      {!isScrolled && (
+        <div className="hidden lg:block bg-slate-50/70 border-b border-slate-100/40 h-9">
+          <div className="w-full max-w-7xl mx-auto h-full flex items-center justify-end gap-6 px-6 lg:px-8 text-[11px] font-semibold text-slate-500 pl-[280px]">
+            <div className="flex items-center gap-1.5">
+              <MapPin className="h-3.5 w-3.5 text-slate-450" />
+              <span>O 201-202, Gala Empire, Drive In Road, Gurukul, Ahmedabad</span>
+            </div>
+            <span className="h-3 w-px bg-slate-200" />
+            <a href="mailto:contact@medisquare.in" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+              <Mail className="h-3.5 w-3.5 text-slate-450" />
+              <span>contact@medisquare.in</span>
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* Main Header Row */}
+      <div className={`w-full max-w-7xl mx-auto flex items-center justify-between lg:justify-end gap-6 lg:gap-8 xl:gap-12 px-6 lg:px-8 relative transition-all duration-300 ${
+        isScrolled ? "h-16" : "h-20"
+      } lg:pl-[240px]`}>
         
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center flex-shrink-0 hover:opacity-90 transition-opacity">
+        {/* Hanging Logo Banner (Desktop only - aligned to content grid margins) */}
+        <div className={`hidden lg:flex absolute left-6 lg:left-8 z-35 items-center justify-center transition-all duration-300 ${
+          isScrolled 
+            ? "w-44 h-[72px] top-0 bg-white border-x border-b border-slate-200/80 rounded-b-2xl shadow-md px-4" 
+            : "w-52 h-20 top-0 bg-transparent border-none shadow-none px-0"
+        }`}>
+          <Link href="/" className="w-full flex items-center justify-center">
+            <Image
+              src="/assets/img/medisquarelogo.png"
+              alt="MediSquare Logo"
+              width={200}
+              height={60}
+              priority
+              className="w-full object-contain h-auto"
+            />
+          </Link>
+        </div>
+
+        {/* Brand Logo (Mobile only) */}
+        <Link href="/" className="lg:hidden flex items-center flex-shrink-0 hover:opacity-90 transition-opacity">
           <Image
             src="/assets/img/medisquarelogo.png"
             alt="MediSquare Logo"
-            width={240}
-            height={72}
+            width={140}
+            height={42}
             priority
-            className={`w-auto object-contain transition-all duration-300 ${
-              isScrolled ? "h-12 md:h-14" : "h-14 md:h-18"
-            }`}
+            className="h-8.5 w-auto object-contain"
           />
         </Link>
 
@@ -93,14 +129,20 @@ export default function Header({ menu }: HeaderProps) {
               >
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1.5 py-3 text-sm tracking-wide transition-colors duration-200 cursor-pointer ${
-                    isActive ? "text-primary font-bold" : "text-slate-700 hover:text-primary"
+                  className={`flex items-center gap-1.5 py-2 px-1 text-[15px] font-bold tracking-wide transition-colors duration-200 cursor-pointer relative ${
+                    isActive ? "text-primary" : "text-slate-700 hover:text-primary"
                   }`}
                 >
                   <span>{item.label}</span>
                   {item.hasDropdown && (
                     <ChevronDown className="h-4 w-4 text-slate-400 group-hover:text-primary transition-transform duration-200 group-hover:rotate-180" />
                   )}
+                  {/* Underline Micro-interaction */}
+                  <span
+                    className={`absolute bottom-0 left-0 w-full h-[2.5px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-250 origin-center ${
+                      isActive ? "scale-x-100" : ""
+                    }`}
+                  />
                 </Link>
 
                 {/* Dropdown Card */}
@@ -140,10 +182,15 @@ export default function Header({ menu }: HeaderProps) {
         <div className="flex items-center gap-4">
           <a
             href="tel:08866843843"
-            className="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-full font-bold text-sm shadow hover:shadow-md transition-all duration-200 pulse-primary"
+            className="hidden sm:flex items-center gap-2.5 group"
           >
-            <Phone className="h-4 w-4" />
-            <span>Call +91 8866 843 843</span>
+            <div className="h-10 w-10 rounded-full border border-slate-250 text-primary flex items-center justify-center transition-all duration-200 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
+              <Phone className="h-4.5 w-4.5" />
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="text-[10px] font-bold text-slate-450 tracking-wider leading-none">Emergency? Call us!</span>
+              <span className="text-sm font-bold text-slate-800 transition-colors group-hover:text-primary leading-tight mt-1">+91 8866 843 843</span>
+            </div>
           </a>
 
           <button

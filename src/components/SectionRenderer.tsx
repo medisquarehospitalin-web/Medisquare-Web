@@ -1,6 +1,7 @@
 "use client";
 
 import HeroSlider from "@/components/sections/HeroSlider";
+import HeroSection from "@/components/sections/HeroSection";
 import ClinicsGridSection from "@/components/sections/ClinicsGridSection";
 import FacilitiesGridSection from "@/components/sections/FacilitiesGridSection";
 import TeamGridSection from "@/components/sections/TeamGridSection";
@@ -33,6 +34,9 @@ export default function SectionRenderer({ sections }: SectionRendererProps) {
           switch (section.sectionType) {
             case "hero_slider":
               return <HeroSlider key={key} data={section.sectionData as never} />;
+            
+            case "hero":
+              return <HeroSection key={key} data={section.sectionData as never} />;
             
             case "clinics_grid":
               return <ClinicsGridSection key={key} data={section.sectionData as never} />;

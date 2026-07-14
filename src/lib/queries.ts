@@ -22,6 +22,8 @@ const sectionDataProjection = `{
   secondaryCta,
   embedUrl,
   mapUrl,
+  breadcrumbText,
+  backgroundImage,
   cards[] {
     title,
     description,
@@ -51,6 +53,12 @@ const sectionDataProjection = `{
     primaryCta,
     secondaryCta
   },
+  specialties[] {
+    name,
+    icon,
+    link
+  },
+  highlights,
   items[] {
     author,
     rating,

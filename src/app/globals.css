@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -21,7 +21,7 @@
   --ring: rgba(233, 84, 32, 0.2);
 
   /* Typography */
-  --font-sans: var(--font-source-sans-3), sans-serif;
+  --font-sans: "Inter", sans-serif;
   --font-heading: "Montserrat", sans-serif;
 }
 
@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 .card-interactive {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 1.5rem; /* 24px */
+  border-radius: 0.75rem; /* 12px */
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 

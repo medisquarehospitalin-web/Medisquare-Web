@@ -6,9 +6,19 @@
   "pageType": "education",
   "sections": [
     {
+      "id": "sec-education-pediatric-hero",
+      "sectionType": "hero",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Pediatric Patient Education",
+        "breadcrumbText": "HOME > PATIENT EDUCATION > PEDIATRIC NEPHROLOGY",
+        "backgroundImage": "/assets/img/carou_lobby.jpg"
+      }
+    },
+    {
       "id": "sec-edu-pediatric-comingsoon",
       "sectionType": "coming_soon",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "sectionData": {
         "title": "Coming",
         "titleHighlight": "Soon"

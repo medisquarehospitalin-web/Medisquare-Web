@@ -22,8 +22,6 @@ export default function FacilitiesGridSection({ data }: FacilitiesGridProps) {
   return (
     <section className="bg-white py-20 border-t border-slate-100">
       <div className="container mx-auto max-w-7xl px-6 lg:px-8">
-        
-        {/* Section Header */}
         <div className="text-center mb-16">
           <Reveal>
             <span className="text-xs font-bold tracking-widest text-primary uppercase bg-orange-50 px-4 py-1.5 rounded-full border border-orange-100 shadow-sm inline-block">
@@ -34,30 +32,26 @@ export default function FacilitiesGridSection({ data }: FacilitiesGridProps) {
             </h2>
           </Reveal>
         </div>
-
-        {/* Minimalist Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.cards.map((card, idx) => (
             <Reveal key={idx} delay={idx * 0.06}>
-              <div className="group flex items-center gap-6 p-6 rounded-2xl bg-slate-50/50 border border-slate-100 hover:bg-white hover:border-primary/20 hover:shadow-md transition-all duration-300">
-                {/* Icon Container */}
-                <div className="relative h-14 w-14 flex-shrink-0 flex items-center justify-center rounded-xl bg-white border border-slate-100 shadow-sm group-hover:border-primary/20 transition-colors">
+              <div className="group flex items-center gap-5 p-4.5 rounded-xl bg-slate-50/50 border border-slate-200/65 hover:bg-white hover:border-primary/20 transition-all duration-300">
+                <div className="relative h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-accent group-hover:bg-primary border border-transparent transition-all duration-300">
                   <Image
                     src={getImageUrl(card.icon)}
                     alt={card.title}
                     fill
-                    className="object-contain p-3"
+                    className="object-contain p-2.5 brightness-0 invert transition-all duration-300"
                   />
                 </div>
                 {/* Title */}
-                <h3 className="text-base md:text-lg font-bold text-secondary group-hover:text-primary transition-colors leading-snug">
+                <h3 className="text-sm md:text-base font-bold text-secondary group-hover:text-primary transition-colors leading-snug">
                   {card.title}
                 </h3>
               </div>
             </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   );

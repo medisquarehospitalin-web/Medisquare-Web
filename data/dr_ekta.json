@@ -6,9 +6,19 @@
   "pageType": "doctor",
   "sections": [
     {
+      "id": "sec-dr-ekta-hero",
+      "sectionType": "hero",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Dr. Ekta Vala Chandarana",
+        "breadcrumbText": "HOME > DOCTORS > DR. EKTA VALA CHANDARANA",
+        "backgroundImage": "/assets/img/carou_lobby.jpg"
+      }
+    },
+    {
       "id": "sec-dr-ekta-profile",
       "sectionType": "doctor_profile",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "sectionData": {
         "name": "DR EKTA VALA CHANDARANA",
         "specialty": "oncology",

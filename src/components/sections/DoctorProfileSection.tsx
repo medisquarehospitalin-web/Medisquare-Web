@@ -32,13 +32,20 @@ interface Socials {
   linkedin?: string;
 }
 
+interface QualificationObject {
+  _type?: 'qualification';
+  degree?: string;
+  specialization?: string;
+  university?: string;
+}
+
 interface DoctorProfileData {
   name: string;
   specialty: string;
   photo: string;
   bio: string;
   socials?: Socials;
-  qualifications: string[];
+  qualifications: (string | QualificationObject)[];
   awards?: string[];
   memberships?: string[];
 }
@@ -162,7 +169,27 @@ export default function DoctorProfileSection({ data }: DoctorProfileSectionProps
                 {data.qualifications.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <span dangerouslySetInnerHTML={{ __html: item }} />
+                    {typeof item === 'string' ? (
+                      <span dangerouslySetInnerHTML={{ __html: item }} />
+                    ) : (
+                      <div className="flex flex-col gap-0.5">
+                        <span className="font-bold text-secondary text-base leading-tight">
+                          {item.degree}
+                        </span>
+                        {item.specialization && (
+                          <span className="text-slate-600 font-semibold text-sm leading-snug">
+                            {item.specialization.startsWith('(') && item.specialization.endsWith(')')
+                              ? item.specialization
+                              : `(${item.specialization})`}
+                          </span>
+                        )}
+                        {item.university && (
+                          <span className="text-slate-400 font-normal text-xs leading-normal">
+                            {item.university}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>

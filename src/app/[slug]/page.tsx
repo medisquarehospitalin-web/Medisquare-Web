@@ -21,6 +21,7 @@ export async function generateStaticParams() {
     "education_oncology",
     "education_movementdisorders",
     "education_pediatric",
+    "contact",
   ];
   return slugs.map((slug) => ({ slug }));
 }

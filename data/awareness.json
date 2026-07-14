@@ -6,9 +6,19 @@
   "pageType": "awareness",
   "sections": [
     {
+      "id": "sec-awareness-hero",
+      "sectionType": "hero",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Health Awareness",
+        "breadcrumbText": "HOME > HEALTH AWARENESS",
+        "backgroundImage": "/assets/img/carou_lobby.jpg"
+      }
+    },
+    {
       "id": "sec-awareness-activities",
       "sectionType": "health_awareness",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "sectionData": {
         "badgeText": "ACTIVITIES",
         "title": "Health Awareness",

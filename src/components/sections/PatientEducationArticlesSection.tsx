@@ -153,7 +153,7 @@ export default function PatientEducationArticlesSection({
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 md:p-8 overflow-y-auto text-sm md:text-base text-slate-600 leading-relaxed font-semibold">
+            <div className="p-6 md:p-8 overflow-y-auto text-sm md:text-base text-slate-600 leading-relaxed font-medium">
               {/* Optional inline education graphics for Parkinson's disease */}
               {selectedArticle.id === "parkinson" && (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">

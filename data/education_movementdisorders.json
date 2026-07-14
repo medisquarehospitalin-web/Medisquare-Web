@@ -6,9 +6,19 @@
   "pageType": "education",
   "sections": [
     {
+      "id": "sec-education-movement-hero",
+      "sectionType": "hero",
+      "sortOrder": 1,
+      "sectionData": {
+        "title": "Neurology Patient Education",
+        "breadcrumbText": "HOME > PATIENT EDUCATION > NEUROLOGY",
+        "backgroundImage": "/assets/img/carou_lobby.jpg"
+      }
+    },
+    {
       "id": "sec-edu-movement-articles",
       "sectionType": "patient_education_articles",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "sectionData": {
         "badgeText": "ARTICLES",
         "title": "Movement Disorder",
