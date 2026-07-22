@@ -10,7 +10,7 @@ interface HeroSectionProps {
   data: {
     title: string;
     breadcrumbText?: string;
-    backgroundImage?: string;
+    backgroundImage?: string | { fileUrl?: string; url?: string } | null;
   };
 }
 

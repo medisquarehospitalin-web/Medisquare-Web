@@ -9,7 +9,6 @@ import {
   PAGES_SITEMAP_QUERY,
 } from "./queries";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function sanityFetch<T = any>(
   query: string,
   params: Record<string, unknown> = {},
@@ -17,7 +16,6 @@ async function sanityFetch<T = any>(
   return sanityClient.fetch<T>(query, params);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapPageData(raw: any): PageResponse | null {
   if (!raw) return null;
 
@@ -36,7 +34,6 @@ function mapPageData(raw: any): PageResponse | null {
 
     sections: Array.isArray(raw.sections)
       ? raw.sections
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .filter((section: any) => {
             if (!section) return false;
             const sectionData = section.sectionData || section;
@@ -44,7 +41,6 @@ function mapPageData(raw: any): PageResponse | null {
               sectionData.hideSection !== true && section.hideSection !== true
             );
           })
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .map((section: any, index: number) => {
             const isProjected = section && "sectionData" in section;
 
@@ -111,7 +107,6 @@ export async function fetchSettings(): Promise<Setting[]> {
   const settings: Setting[] = [];
 
   if (Array.isArray(rawDetails)) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rawDetails.forEach((d: any) => {
       settings.push({
         id: d._id || d.key,
@@ -122,7 +117,6 @@ export async function fetchSettings(): Promise<Setting[]> {
   }
 
   if (Array.isArray(rawSocials)) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rawSocials.forEach((s: any) => {
       settings.push({
         id: s._id || s.socialKey,
@@ -169,7 +163,6 @@ export async function fetchMenuFront(): Promise<MenusResponse> {
         parentPage: null,
         segment: null,
         children: Array.isArray(item.children)
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ? item.children
               .filter((child: any) => child && child.status === 1)
               .map((child: any, cidx: number) => {
@@ -287,7 +280,6 @@ export async function fetchPageBySlug(slug: string): Promise<PageBySlugResponse>
 export async function fetchPagesSitemap(): Promise<{
   pages: Array<{ slug: string; updatedAt: string; changefreq?: string; priority?: string }>;
 }> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const raw: any[] = await sanityFetch(PAGES_SITEMAP_QUERY);
   const pages = Array.isArray(raw)
     ? raw

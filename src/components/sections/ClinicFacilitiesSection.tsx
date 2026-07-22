@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { X, ArrowRight } from "lucide-react";
 import Reveal from "@/components/site/Reveal";
@@ -9,7 +9,7 @@ import { getImageUrl } from "@/lib/utils";
 interface FacilityCard {
   id: string;
   title: string;
-  icon: string;
+  icon?: string | { fileUrl?: string; url?: string } | null;
   modalContent?: {
     title: string;
     body: string;
@@ -29,6 +29,18 @@ interface ClinicFacilitiesSectionProps {
 
 export default function ClinicFacilitiesSection({ data }: ClinicFacilitiesSectionProps) {
   const [selectedCard, setSelectedCard] = useState<FacilityCard | null>(null);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedCard) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedCard]);
 
   return (
     <section className="bg-background py-20 border-t border-slate-100">
@@ -91,33 +103,65 @@ export default function ClinicFacilitiesSection({ data }: ClinicFacilitiesSectio
       {/* Modal Dialog */}
       {selectedCard && selectedCard.modalContent && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/65 backdrop-blur-sm p-0 md:p-6 animate-fade-in"
           onClick={() => setSelectedCard(null)}
         >
           <div
-            className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh] border border-slate-100"
+            className="relative w-full max-w-5xl h-full md:h-[85vh] bg-white rounded-none md:rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-slate-100"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
-              <h3 className="text-xl md:text-2xl font-extrabold text-secondary leading-tight pr-6">
-                {selectedCard.modalContent.title}
-              </h3>
-              <button
-                onClick={() => setSelectedCard(null)}
-                className="text-slate-500 hover:text-primary transition-colors p-2 rounded-xl hover:bg-slate-100 cursor-pointer border border-slate-100 flex-shrink-0"
-                aria-label="Close modal"
-              >
-                <X className="h-5 w-5" />
-              </button>
+            {/* Left Side Banner (Visual Content) */}
+            <div className="relative w-full md:w-5/12 h-48 md:h-full bg-slate-950 flex flex-col items-center justify-center p-6 md:p-10 text-white select-none shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-orange-950/40 to-slate-950" />
+              {/* Soft overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+              
+              <div className="relative z-10 flex flex-col items-center text-center gap-4">
+                {selectedCard.icon && (
+                  <div className="h-20 w-20 p-4 rounded-3xl bg-white shadow-xl flex items-center justify-center">
+                    <Image
+                      src={getImageUrl(selectedCard.icon)}
+                      alt={selectedCard.title}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                  </div>
+                )}
+                <div>
+                  <span className="text-[10px] font-extrabold tracking-widest text-primary uppercase bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">
+                    Clinic Facility
+                  </span>
+                  <h3 className="text-xl md:text-2xl font-extrabold leading-tight font-heading mt-3" style={{ color: '#ffffff' }}>
+                    {selectedCard.modalContent.title}
+                  </h3>
+                </div>
+              </div>
             </div>
 
-            {/* Modal Body */}
-            <div className="p-6 md:p-8 overflow-y-auto text-sm md:text-base text-slate-600 leading-relaxed font-medium">
-              <div
-                className="text-justify flex flex-col gap-4 whitespace-pre-line"
-                dangerouslySetInnerHTML={{ __html: selectedCard.modalContent.body }}
-              />
+            {/* Right Side Content Panel */}
+            <div className="relative flex-grow flex flex-col h-[calc(100%-12rem)] md:h-full overflow-hidden bg-white">
+              {/* Sticky Header with Close Button */}
+              <div className="flex items-center justify-between px-6 py-4 md:px-10 md:py-6 border-b border-slate-100 bg-slate-50/50">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  Details
+                </span>
+                <button
+                  onClick={() => setSelectedCard(null)}
+                  className="text-slate-400 hover:text-primary transition-all p-2 rounded-xl hover:bg-slate-100 cursor-pointer border border-slate-150 flex-shrink-0"
+                  aria-label="Close modal"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* Scrollable Article Body */}
+              <div className="p-6 md:p-10 overflow-y-auto flex-grow text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+                <div
+                  className="text-justify flex flex-col gap-4 whitespace-pre-line"
+                  dangerouslySetInnerHTML={{ __html: selectedCard.modalContent.body }}
+                />
+              </div>
             </div>
           </div>
         </div>

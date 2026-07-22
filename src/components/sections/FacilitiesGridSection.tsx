@@ -6,7 +6,7 @@ import { getImageUrl } from "@/lib/utils";
 
 interface FacilityCard {
   title: string;
-  icon: string;
+  icon?: string | { fileUrl?: string; url?: string } | null;
 }
 
 interface FacilitiesGridProps {
