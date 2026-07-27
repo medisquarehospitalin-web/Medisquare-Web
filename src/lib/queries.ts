@@ -23,11 +23,11 @@ const sectionDataProjection = `{
   embedUrl,
   mapUrl,
   breadcrumbText,
-  backgroundImage,
+  "backgroundImage": select(defined(backgroundImage.asset) => backgroundImage ${imageProjection}, backgroundImage),
   cards[] {
     title,
     description,
-    icon,
+    "icon": select(defined(icon.asset) => icon ${imageProjection}, icon),
     link,
     id,
     "image": image ${imageProjection},

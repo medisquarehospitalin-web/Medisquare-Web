@@ -8,7 +8,7 @@ import { getImageUrl } from "@/lib/utils";
 interface ClinicCard {
   title: string;
   description: string;
-  icon: string;
+  icon?: string | { fileUrl?: string; url?: string } | null;
   link: string;
 }
 

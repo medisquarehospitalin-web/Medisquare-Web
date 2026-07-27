@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, PlayCircle, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Reveal from "@/components/site/Reveal";
 import { getImageUrl } from "@/lib/utils";
 
@@ -37,6 +38,18 @@ export default function HealthAwarenessSection({ data }: HealthAwarenessProps) {
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
+  const getSlideUrl = (slide: unknown): string => {
+    if (!slide) return "";
+    if (typeof slide === "string") return slide;
+    if (slide && typeof slide === "object" && "fileUrl" in slide) {
+      return (slide as { fileUrl: string }).fileUrl || "";
+    }
+    if (slide && typeof slide === "object" && "url" in slide) {
+      return (slide as { url: string }).url || "";
+    }
+    return "";
+  };
+
   const openModal = (activity: Activity) => {
     setSelectedActivity(activity);
     setActiveSlideIndex(0);
@@ -63,6 +76,46 @@ export default function HealthAwarenessSection({ data }: HealthAwarenessProps) {
         selectedActivity.slides!.length
     );
   };
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedActivity) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedActivity]);
+
+  // Keyboard controls
+  useEffect(() => {
+    if (!selectedActivity) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeModal();
+      } else if (e.key === "ArrowRight") {
+        if (selectedActivity.slides && selectedActivity.slides.length > 1) {
+          setActiveSlideIndex((prev) => (prev + 1) % selectedActivity.slides!.length);
+        }
+      } else if (e.key === "ArrowLeft") {
+        if (selectedActivity.slides && selectedActivity.slides.length > 1) {
+          setActiveSlideIndex(
+            (prev) =>
+              (prev - 1 + selectedActivity.slides!.length) %
+              selectedActivity.slides!.length
+          );
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedActivity]);
 
   return (
     <section className="bg-white py-20 border-t border-slate-100">
@@ -152,83 +205,147 @@ export default function HealthAwarenessSection({ data }: HealthAwarenessProps) {
 
       </div>
 
-      {/* Activity Carousel Modal Dialog */}
-      {selectedActivity && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in"
-          onClick={closeModal}
-        >
-          <div
-            className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-slate-100"
-            onClick={(e) => e.stopPropagation()}
+      {/* Activity Gallery Fullscreen Lightbox */}
+      <AnimatePresence>
+        {selectedActivity && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ 
+              backgroundColor: "rgba(10, 10, 10, 0.98)", 
+              zIndex: 9999,
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)"
+            }}
+            className="fixed inset-0 flex flex-col justify-between select-none"
+            onClick={closeModal}
           >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-100 bg-slate-50/50">
-              <h3 className="text-lg md:text-xl font-extrabold text-secondary line-clamp-2 pr-6">
-                {selectedActivity.title}
-              </h3>
-              <button
-                onClick={closeModal}
-                className="text-slate-500 hover:text-primary transition-colors p-2 rounded-xl hover:bg-slate-100 cursor-pointer border border-slate-100 flex-shrink-0"
-                aria-label="Close modal"
-              >
-                <X className="h-5 w-5" />
-              </button>
+            {/* Top Control Bar */}
+            <div 
+              className="w-full flex items-center justify-between p-4 md:p-6 bg-gradient-to-b from-black/80 to-transparent z-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col gap-1 max-w-[70%]">
+                <span className="text-xs font-semibold text-primary uppercase tracking-widest">
+                  Campaign Gallery
+                </span>
+                <div 
+                  style={{ color: "#ffffff" }} 
+                  className="text-base md:text-xl font-bold line-clamp-1"
+                >
+                  {selectedActivity.title}
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-4">
+                {selectedActivity.slides && selectedActivity.slides.length > 1 && (
+                  <span className="hidden sm:inline-block text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 text-white/80 border border-white/10 backdrop-blur-md">
+                    {activeSlideIndex + 1} / {selectedActivity.slides.length}
+                  </span>
+                )}
+                <button
+                  onClick={closeModal}
+                  className="text-white/70 hover:text-white transition-all p-2.5 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md"
+                  aria-label="Close gallery"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
             </div>
 
-            {/* Modal Body - Image Slider */}
-            <div className="relative flex-grow flex items-center justify-center p-4 md:p-8 bg-slate-950 aspect-video md:aspect-[21/9]">
-              <div className="relative w-full h-full">
-                {selectedActivity.slides && selectedActivity.slides[activeSlideIndex]?.fileUrl && (
-                  <Image
-                    src={getImageUrl(selectedActivity.slides[activeSlideIndex]!.fileUrl)}
-                    alt={`${selectedActivity.title} - Slide ${activeSlideIndex + 1}`}
-                    fill
-                    priority
-                    className="object-contain"
-                  />
+            {/* Main Carousel / Viewport */}
+            <div 
+              className="relative flex-grow flex items-center justify-center p-4 md:p-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-[60vh] md:h-[70vh] max-w-5xl">
+                {selectedActivity.slides && selectedActivity.slides[activeSlideIndex] && (
+                  <motion.div
+                    key={activeSlideIndex}
+                    initial={{ opacity: 0, scale: 0.97 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="absolute inset-0 w-full h-full"
+                  >
+                    <Image
+                      src={getImageUrl(getSlideUrl(selectedActivity.slides[activeSlideIndex]))}
+                      alt={`${selectedActivity.title} - Slide ${activeSlideIndex + 1}`}
+                      fill
+                      priority
+                      className="object-contain"
+                    />
+                  </motion.div>
                 )}
               </div>
 
-              {/* Slider Controls */}
+              {/* Float Controls on Left/Right */}
               {selectedActivity.slides && selectedActivity.slides.length > 1 && (
                 <>
                   <button
                     onClick={handlePrevSlide}
-                    className="absolute left-6 bg-white/90 hover:bg-white text-slate-800 p-2.5 rounded-xl shadow-lg hover:scale-105 transition-all cursor-pointer"
+                    className="absolute left-4 md:left-8 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white p-3.5 rounded-full border border-white/15 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-md"
                     aria-label="Previous Slide"
                   >
-                    <ChevronLeft className="h-5 w-5" />
+                    <ChevronLeft className="h-6 w-6" />
                   </button>
                   <button
                     onClick={handleNextSlide}
-                    className="absolute right-6 bg-white/90 hover:bg-white text-slate-800 p-2.5 rounded-xl shadow-lg hover:scale-105 transition-all cursor-pointer"
+                    className="absolute right-4 md:right-8 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white p-3.5 rounded-full border border-white/15 hover:scale-105 active:scale-95 transition-all cursor-pointer backdrop-blur-md"
                     aria-label="Next Slide"
                   >
-                    <ChevronRight className="h-5 w-5" />
+                    <ChevronRight className="h-6 w-6" />
                   </button>
                 </>
               )}
             </div>
 
-            {/* Modal Footer - Indicators */}
-            {selectedActivity.slides && selectedActivity.slides.length > 1 && (
-              <div className="p-4 bg-slate-50/50 border-t border-slate-100 flex items-center justify-center gap-2">
-                {selectedActivity.slides.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveSlideIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      activeSlideIndex === idx ? "w-5 bg-primary" : "w-2 bg-slate-300 hover:bg-slate-400"
-                    }`}
-                    aria-label={`Go to slide ${idx + 1}`}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+            {/* Bottom Section: Thumbnail strip and slide info */}
+            <div 
+              className="w-full flex flex-col items-center gap-4 p-4 md:p-6 bg-gradient-to-t from-black/80 to-transparent z-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {selectedActivity.slides && selectedActivity.slides.length > 1 && (
+                <>
+                  {/* Slide count on mobile */}
+                  <span className="sm:hidden text-xs font-semibold px-3 py-1 rounded-full bg-white/10 text-white/80 border border-white/10 backdrop-blur-md">
+                    {activeSlideIndex + 1} / {selectedActivity.slides.length}
+                  </span>
+                  
+                  {/* Thumbnail Row */}
+                  <div className="flex items-center gap-2.5 overflow-x-auto max-w-full px-4 py-2 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+                    {selectedActivity.slides.map((slide, idx) => {
+                      const slideUrl = getSlideUrl(slide);
+                      if (!slideUrl) return null;
+                      const isActive = activeSlideIndex === idx;
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => setActiveSlideIndex(idx)}
+                          className={`relative h-12 w-20 md:h-16 md:w-24 rounded-lg overflow-hidden border-2 transition-all duration-300 flex-shrink-0 cursor-pointer ${
+                            isActive 
+                              ? "border-primary scale-105 shadow-[0_0_12px_rgba(233,84,32,0.6)]" 
+                              : "border-white/20 opacity-50 hover:opacity-80"
+                          }`}
+                        >
+                          <Image
+                            src={getImageUrl(slideUrl)}
+                            alt={`Thumbnail ${idx + 1}`}
+                            fill
+                            className="object-cover"
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
