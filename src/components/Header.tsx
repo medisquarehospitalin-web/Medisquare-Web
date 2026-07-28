@@ -22,7 +22,7 @@ export default function Header({ menu, settings }: HeaderProps) {
   // Detect scroll to style header dynamically
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -59,7 +59,7 @@ export default function Header({ menu, settings }: HeaderProps) {
   return (
     <>
       <header
-        className={`sticky top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
           isScrolled
             ? "glass-header shadow-sm"
             : "bg-white border-b border-slate-100"
@@ -207,6 +207,8 @@ export default function Header({ menu, settings }: HeaderProps) {
           </div>
         </div>
       </header>
+      {/* Spacer to prevent layout shift and header scroll jitter */}
+      <div className="h-20 lg:h-[116px] w-full" />
 
       {/* Mobile Drawer (Backdrop) */}
       {mobileMenuOpen && (

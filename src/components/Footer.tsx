@@ -71,7 +71,7 @@ export default function Footer({ settings, footerMenu }: FooterProps) {
               alt="MediSquare Logo"
               width={400}
               height={120}
-              className="h-10 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
           </Link>
           <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
@@ -119,8 +119,14 @@ export default function Footer({ settings, footerMenu }: FooterProps) {
           </div>
         </div>
 
-        {/* Facilities Column (No heading) */}
-        <div className="md:col-span-3 flex flex-col gap-5 pt-2">
+        {/* Facilities Column */}
+        <div className="md:col-span-3 flex flex-col gap-4 pt-2">
+          <div className="flex flex-col gap-1.5">
+            <h3 className="!text-white text-xs font-bold tracking-widest uppercase">
+              {facilitiesColumn?.menuName || "Specialties"}
+            </h3>
+            <div className="h-0.5 w-8 bg-primary rounded" />
+          </div>
           <ul className="flex flex-col gap-3 text-sm font-semibold">
             {displayItems.map((link, idx) => (
               <li key={idx}>
@@ -136,8 +142,14 @@ export default function Footer({ settings, footerMenu }: FooterProps) {
           </ul>
         </div>
 
-        {/* Contact info block (No heading) */}
-        <div className="md:col-span-4 flex flex-col gap-5 pt-2">
+        {/* Contact info block */}
+        <div className="md:col-span-4 flex flex-col gap-4 pt-2">
+          <div className="flex flex-col gap-1.5">
+            <h3 className="!text-white text-xs font-bold tracking-widest uppercase">
+              Contact Us
+            </h3>
+            <div className="h-0.5 w-8 bg-primary rounded" />
+          </div>
           <ul className="flex flex-col gap-4 text-sm font-medium text-slate-400">
             <li className="flex items-start gap-3">
               <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
