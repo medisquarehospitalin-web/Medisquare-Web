@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/site/Reveal";
 import { getImageUrl } from "@/lib/utils";
-import { ArrowRight, CheckCircle2, Stethoscope } from "lucide-react";
+import { ArrowRight, CheckCircle2, Stethoscope, Globe } from "lucide-react";
 
 interface TeamMember {
   name: string;
@@ -15,6 +15,8 @@ interface TeamMember {
   } | null;
   bio: string;
   link: string;
+  webUrl?: string;
+  webName?: string;
 }
 
 interface TeamGridProps {
@@ -51,6 +53,10 @@ export default function TeamGridSection({ data }: TeamGridProps) {
               .split(/<br\s*\/?>/i)
               .map((line) => line.trim())
               .filter(Boolean);
+
+            const rawWebUrl = member.webUrl?.trim() || "";
+            const webHref = rawWebUrl.startsWith("www.") ? `https://${rawWebUrl}` : rawWebUrl;
+            const isWebExternal = webHref.startsWith("http://") || webHref.startsWith("https://");
 
             return (
               <Reveal key={idx} delay={idx * 0.1}>
@@ -91,9 +97,9 @@ export default function TeamGridSection({ data }: TeamGridProps) {
                     
                     {/* Header - Reduced margins and text sizes */}
                     <div className="mb-4">
-                      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-primary">
+                      {/* <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-primary">
                         Specialist Doctor
-                      </p>
+                      </p> */}
                       <h3 className="text-xl font-bold leading-tight text-slate-900 transition-colors duration-300 group-hover:text-primary">
                         {member.name}
                       </h3>
@@ -115,6 +121,21 @@ export default function TeamGridSection({ data }: TeamGridProps) {
                             />
                           </li>
                         ))}
+
+                        {(member.webName || webHref) && (
+                          <li className="flex items-center gap-2.5 text-[13px] leading-tight text-slate-600">
+                            <Globe className="h-3.5 w-3.5 shrink-0 text-primary" />
+                            <span className="font-semibold text-slate-700">Website:</span>
+                            <a
+                              href={webHref || "#"}
+                              target={isWebExternal ? "_blank" : undefined}
+                              rel={isWebExternal ? "noopener noreferrer" : undefined}
+                              className="font-bold text-primary hover:underline hover:text-primary-dark transition-colors"
+                            >
+                              {member.webName || rawWebUrl }
+                            </a>
+                          </li>
+                        )}
                       </ul>
                     </div>
 
