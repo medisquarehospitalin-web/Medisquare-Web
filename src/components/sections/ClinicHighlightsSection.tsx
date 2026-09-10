@@ -154,8 +154,10 @@ export default function ClinicHighlightsSection({ data }: ClinicHighlightsSectio
               {/* Scrollable Article Body */}
               <div className="p-6 md:p-10 overflow-y-auto flex-grow text-sm md:text-base text-slate-600 leading-relaxed font-medium">
                 <div
-                  className="text-justify flex flex-col gap-4 whitespace-pre-line"
-                  dangerouslySetInnerHTML={{ __html: selectedCard.modalContent.body }}
+                  className="whitespace-pre-line text-left text-slate-700 leading-relaxed font-normal [&_strong]:text-secondary [&_strong]:font-bold [&_ul]:my-3 [&_ul]:pl-5 [&_ul]:list-disc [&_li]:mb-1"
+                  dangerouslySetInnerHTML={{
+                    __html: selectedCard.modalContent.body?.replace(/(<br\s*\/?>\s*){3,}/gi, "<br><br>") || ""
+                  }}
                 />
               </div>
             </div>
