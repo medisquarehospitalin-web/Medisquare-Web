@@ -162,19 +162,17 @@ export default function ContactAppointmentSection({ data }: ContactAppointmentSe
               </Reveal>
 
               {/* Map Box */}
-              {data.location?.mapUrl && (
-                <Reveal>
-                  <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
-                    <iframe
-                      src={data.location.mapUrl}
-                      title="Hospital Map Location"
-                      className="w-full h-full border-0 absolute inset-0"
-                      allowFullScreen
-                      loading="lazy"
-                    />
-                  </div>
-                </Reveal>
-              )}
+              <Reveal>
+                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
+                  <iframe
+                    src={data.location?.mapUrl || "https://maps.google.com/maps?q=O-201,202,+Gala+Empire,+Opposite+Doordarshan+Tower,+Drive-in+Road,+Gurukul,+Ahmedabad,+Gujarat+380054&output=embed"}
+                    title="Hospital Map Location"
+                    className="w-full h-full border-0 absolute inset-0"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+              </Reveal>
             </div>
           )}
 
@@ -218,7 +216,7 @@ export default function ContactAppointmentSection({ data }: ContactAppointmentSe
                         id="user_name"
                         required
                         className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all font-semibold text-secondary text-sm"
-                        placeholder="John Doe"
+                        placeholder="Enter Your Name"
                       />
                     </div>
 
@@ -250,7 +248,7 @@ export default function ContactAppointmentSection({ data }: ContactAppointmentSe
                       id="user_email"
                       required
                       className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200/80 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all font-semibold text-secondary text-sm"
-                      placeholder="john@example.com"
+                      placeholder="user@example.com"
                     />
                   </div>
 

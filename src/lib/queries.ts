@@ -40,6 +40,8 @@ const sectionDataProjection = `{
     bio,
     ishighlight,
     link,
+    webUrl,
+    webName,
     facebook,
     twitter,
     instagram

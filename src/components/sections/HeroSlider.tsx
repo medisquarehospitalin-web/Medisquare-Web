@@ -133,7 +133,7 @@ export default function HeroSlider({ data }: HeroSliderProps) {
         <Reveal>
           <div className="inline-flex items-center gap-2 bg-primary/5 px-4 py-1.5 rounded-full border border-primary/20 text-primary text-xs font-bold tracking-wider uppercase w-fit">
             <span className="h-2 w-2 rounded-full bg-primary animate-ping" />
-            <span>{currentSlide?.badge || "Ahmedabad's Premier Medical Institute"}</span>
+            <span>{currentSlide?.badge || "Ahmedabad's Premier Oncology and Neurology Center"}</span>
           </div>
         </Reveal>
 
@@ -217,7 +217,7 @@ export default function HeroSlider({ data }: HeroSliderProps) {
           {(data.highlights || [
             "Expert Oncologists",
             "Movement Disorder Speciality",
-            "5-Bedded Day Care Center",
+            "15-Bedded Day Care Center",
             "Full-Scale Pharmacy"
           ]).map((highlight, idx) => (
             <div key={idx} className="flex items-center gap-2">
