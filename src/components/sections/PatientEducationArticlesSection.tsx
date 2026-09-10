@@ -229,8 +229,10 @@ export default function PatientEducationArticlesSection({
                 )}
 
                 <div
-                  className="text-justify flex flex-col gap-4 whitespace-pre-line"
-                  dangerouslySetInnerHTML={{ __html: selectedArticle.modalContent.body }}
+                  className="whitespace-pre-line text-left text-slate-700 leading-relaxed font-normal [&_strong]:text-secondary [&_strong]:font-bold [&_ul]:my-3 [&_ul]:pl-5 [&_ul]:list-disc [&_li]:mb-1"
+                  dangerouslySetInnerHTML={{
+                    __html: selectedArticle.modalContent.body?.replace(/(<br\s*\/?>\s*){3,}/gi, "<br><br>") || ""
+                  }}
                 />
               </div>
             </div>
